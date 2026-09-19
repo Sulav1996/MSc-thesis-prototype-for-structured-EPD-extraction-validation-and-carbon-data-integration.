@@ -1,0 +1,3820 @@
+{
+  "dictionary_name": "English EPD PDF/ILCD Parser Dictionary",
+  "version": "3.0.0-thesis",
+  "created_for": "Construction EPD ingestion / thesis prototype",
+  "language_scope": [
+    "English"
+  ],
+  "intended_sources": [
+    "EPD Danmark",
+    "ÖKOBAUDAT",
+    "ECO Platform / ECO Portal",
+    "LCAbyg-compatible EPD data",
+    "One Click LCA / EPDs processed or generated in its ecosystem"
+  ],
+  "coverage_note": "Built from authoritative ILCD+EPD master data and format requirements plus representative English EPD table variants. It is designed to generalize across EPDs; no finite alias dictionary can guarantee 100% coverage of every historical or future PDF layout.",
+  "parser_rules": {
+    "match_priority": [
+      "ILCD refObjectId/UUID when the identifier is known for the detected method profile",
+      "exact canonical abbreviation + detected EN15804 profile",
+      "exact normalized English long name + compatible unit + section context",
+      "exact alias + compatible unit + section context",
+      "fuzzy alias matching only as a last resort; never accept fuzzy result without unit/section/standard checks"
+    ],
+    "standard_detection": {
+      "EN15804_A1_CML": [
+        "EN 15804+A1",
+        "EN15804+A1",
+        "EN 15804:2012+A1:2013",
+        "EN15804:2012+A1:2013",
+        "CML"
+      ],
+      "EN15804_A2_EF3.0": [
+        "EN 15804+A2",
+        "EN15804+A2",
+        "EN 15804:2012+A2:2019",
+        "EN15804:2012+A2:2019",
+        "EF 3.0",
+        "EF3.0",
+        "EC-JRC EF3.0"
+      ],
+      "EN15804_A2_EF3.1": [
+        "EN 15804+A2",
+        "EN15804+A2",
+        "EN 15804:2012+A2:2019",
+        "EN15804:2012+A2:2019",
+        "EF 3.1",
+        "EF3.1"
+      ],
+      "EN15804_A2_UNKNOWN_EF": [
+        "EN 15804+A2",
+        "EN15804+A2",
+        "EN 15804:2012+A2:2019",
+        "EN15804:2012+A2:2019"
+      ]
+    },
+    "standard_disambiguation": [
+      "Do not merge EN15804+A1 and EN15804+A2 impact values into the same method profile.",
+      "AP: kg SO2 eq strongly indicates +A1; mol H+ eq strongly indicates +A2.",
+      "EP: one unsplit kg phosphate/PO4 indicator strongly indicates +A1; freshwater/marine/terrestrial split indicates +A2.",
+      "POCP: kg ethene/C2H4 eq indicates +A1; kg NMVOC eq indicates +A2.",
+      "GWP-total/fossil/biogenic/luluc split indicates +A2.",
+      "If the standard is unknown, store the raw result and mark method_profile='unresolved' rather than guessing."
+    ],
+    "a1_a3_handling": {
+      "aggregate_only": {
+        "condition": "A1-A3 reported but A1/A2/A3 not reported",
+        "action": "Store the value under A1-A3 with provenance='reported'. Leave A1, A2 and A3 null."
+      },
+      "split_only": {
+        "condition": "A1, A2 and A3 reported but A1-A3 not reported",
+        "action": "Store A1/A2/A3 as reported. Optionally compute A1-A3_calculated = A1+A2+A3 with provenance='calculated'; never label it reported."
+      },
+      "split_plus_reported_total": {
+        "condition": "A1, A2, A3 and A1-A3 are all reported",
+        "action": "Store all four reported values. Compare sum(A1,A2,A3) to reported A1-A3 using rounding-aware QA; do not overwrite the reported total."
+      },
+      "partial_split": {
+        "condition": "Only some of A1/A2/A3 are reported",
+        "action": "Store only what is explicitly reported. Do not derive missing components from A1-A3."
+      },
+      "mode_field": "a1_a3_reporting_mode",
+      "allowed_modes": [
+        "aggregate_only",
+        "split_only",
+        "split_plus_reported_total",
+        "partial_split",
+        "none"
+      ]
+    },
+    "module_header_normalization": {
+      "normalize_unicode_dashes": true,
+      "remove_whitespace_around_hyphens": true,
+      "case_insensitive": true,
+      "strip_prefix_tokens": [
+        "tot",
+        "total",
+        "production",
+        "product stage"
+      ],
+      "important_note": "Do not infer numeric modules from prose such as 'A1 to A3' unless it is in a result-table header or explicitly marked as an aggregate result."
+    },
+    "number_parsing": {
+      "accept_decimal_point": true,
+      "accept_decimal_comma": true,
+      "accept_scientific_notation": [
+        "2.88E+00",
+        "2,88E+00",
+        "2.88 E+00",
+        "-1.30E+00",
+        "‐1,30E+00"
+      ],
+      "normalize_unicode_minus": true,
+      "strip_footnote_markers_after_indicator": true,
+      "thousands_separator_policy": "Use table locale/context. Do not blindly remove commas because comma may be decimal separator."
+    },
+    "missing_value_tokens": {
+      "not_declared": [
+        "ND",
+        "MND",
+        "module not declared",
+        "not declared"
+      ],
+      "not_relevant": [
+        "NR",
+        "not relevant"
+      ],
+      "not_applicable": [
+        "N/A",
+        "NA",
+        "not applicable"
+      ],
+      "not_available": [
+        "n.a.",
+        "not available",
+        "no data"
+      ],
+      "system_boundary_declared_markers": [
+        "X",
+        "x",
+        "✓",
+        "declared"
+      ],
+      "important_note": "Numeric 0 or 0.00E+00 is a real zero, never a missing value. A dash '-' is context-sensitive and must not automatically become zero."
+    },
+    "ocr_text_normalization": [
+      "Unicode dashes (– — ‐ −) -> ASCII '-' for matching only; preserve raw text separately.",
+      "CO₂ -> CO2; SO₂ -> SO2; m³ -> m3; m² -> m2 for matching.",
+      "Superscript/subscript footnote digits attached to indicator codes should be stripped for matching.",
+      "Join line-broken indicator labels such as 'ADP-minerals &' + 'metals'.",
+      "Dehyphenate words broken at line endings when the PDF text layer inserts soft hyphens.",
+      "Collapse repeated whitespace, but preserve table cell boundaries in the extraction layer.",
+      "Keep both raw_text and normalized_text for auditability."
+    ],
+    "table_context_sections": {
+      "core_impact": [
+        "LCA results",
+        "Environmental impacts",
+        "Environmental impact data",
+        "Potential environmental impact",
+        "Core environmental impact indicators",
+        "Core environmental impacts",
+        "Environmental impacts - EN 15804+A1, CML"
+      ],
+      "additional_impact": [
+        "Additional environmental impacts",
+        "Additional environmental impact indicators",
+        "Additional (optional) environmental impact indicators",
+        "Potential environmental impact - additional mandatory and voluntary indicators"
+      ],
+      "resource_use": [
+        "Resource use",
+        "Use of resources",
+        "Use of natural resources"
+      ],
+      "waste": [
+        "Waste categories",
+        "Waste generation",
+        "End of life - waste",
+        "Waste production"
+      ],
+      "output_flow": [
+        "Output flows",
+        "End of life - output flows",
+        "Waste production and output flows",
+        "Waste categories and output flows"
+      ],
+      "biogenic_carbon": [
+        "Biogenic carbon content",
+        "Information on biogenic carbon content"
+      ]
+    },
+    "context_disambiguation": [
+      "WDP vs FW: use table section + unit + indicator label; never map bare 'water use' globally.",
+      "EEE/EET vs generic EE: keep generic exported energy as EE_TOTAL unless electricity/thermal is explicitly stated.",
+      "Density may mean gross density in product-property context; preserve raw field label.",
+      "Declared unit and functional unit are not interchangeable; store both if both are present."
+    ],
+    "confidence_levels": {
+      "1.00": "Exact known ILCD UUID/refObjectId for detected method profile",
+      "0.98": "Exact canonical code + compatible method profile + compatible unit",
+      "0.95": "Exact canonical/long name + compatible unit + section",
+      "0.90": "Exact alias + compatible unit + section",
+      "0.80": "Exact alias with incomplete context",
+      "<0.80": "Require manual review; fuzzy match only"
+    }
+  },
+  "life_cycle_modules": {
+    "A0": {
+      "name": "Pre-construction / optional upstream stage",
+      "aliases": [
+        "A0"
+      ]
+    },
+    "A1": {
+      "name": "Raw material supply",
+      "aliases": [
+        "A1",
+        "Raw material supply",
+        "Raw materials",
+        "Upstream processes"
+      ]
+    },
+    "A2": {
+      "name": "Transport to manufacturer",
+      "aliases": [
+        "A2",
+        "Transport to manufacturer",
+        "Transport to production site",
+        "Transport to the core process"
+      ]
+    },
+    "A3": {
+      "name": "Manufacturing",
+      "aliases": [
+        "A3",
+        "Manufacturing",
+        "Manufacture",
+        "Core process",
+        "Core processes"
+      ]
+    },
+    "A4": {
+      "name": "Transport to building site",
+      "aliases": [
+        "A4",
+        "Transport to building site",
+        "Transport to site",
+        "Transport to customer"
+      ]
+    },
+    "A5": {
+      "name": "Construction / installation process",
+      "aliases": [
+        "A5",
+        "Installation",
+        "Installation process",
+        "Construction installation",
+        "Construction/installation"
+      ]
+    },
+    "B1": {
+      "name": "Use",
+      "aliases": [
+        "B1",
+        "Use"
+      ]
+    },
+    "B2": {
+      "name": "Maintenance",
+      "aliases": [
+        "B2",
+        "Maintenance"
+      ]
+    },
+    "B3": {
+      "name": "Repair",
+      "aliases": [
+        "B3",
+        "Repair"
+      ]
+    },
+    "B4": {
+      "name": "Replacement",
+      "aliases": [
+        "B4",
+        "Replacement"
+      ]
+    },
+    "B5": {
+      "name": "Refurbishment",
+      "aliases": [
+        "B5",
+        "Refurbishment"
+      ]
+    },
+    "B6": {
+      "name": "Operational energy use",
+      "aliases": [
+        "B6",
+        "Operational energy use",
+        "Operational energy"
+      ]
+    },
+    "B7": {
+      "name": "Operational water use",
+      "aliases": [
+        "B7",
+        "Operational water use",
+        "Operational water"
+      ]
+    },
+    "C1": {
+      "name": "Deconstruction / demolition",
+      "aliases": [
+        "C1",
+        "Deconstruction",
+        "De-construction",
+        "Demolition",
+        "Deconstruction demolition"
+      ]
+    },
+    "C2": {
+      "name": "Transport at end of life",
+      "aliases": [
+        "C2",
+        "End-of-life transport",
+        "Transport to waste treatment",
+        "Transport to disposal"
+      ]
+    },
+    "C3": {
+      "name": "Waste processing",
+      "aliases": [
+        "C3",
+        "Waste processing",
+        "Waste treatment",
+        "Recycling processing"
+      ]
+    },
+    "C4": {
+      "name": "Disposal",
+      "aliases": [
+        "C4",
+        "Disposal",
+        "Final disposal",
+        "Landfill"
+      ]
+    },
+    "D": {
+      "name": "Benefits and loads beyond the system boundary",
+      "aliases": [
+        "D",
+        "Module D",
+        "Re-use recovery recycling potential",
+        "Reuse recovery recycling potential",
+        "Recycling potential",
+        "Benefits beyond system boundary",
+        "Beyond the system boundary"
+      ]
+    }
+  },
+  "aggregate_modules": {
+    "A1-A3": {
+      "kind": "standard_reported_aggregate",
+      "components": [
+        "A1",
+        "A2",
+        "A3"
+      ],
+      "aliases": [
+        "A1-A3",
+        "A1–A3",
+        "A1—A3",
+        "A1-3",
+        "A1 – A3",
+        "A1 to A3",
+        "A1+A2+A3",
+        "Tot.A1-A3",
+        "Tot. A1-A3",
+        "Total A1-A3",
+        "Total A1 to A3",
+        "Product stage A1-A3",
+        "Production A1-A3",
+        "Production A1-3",
+        "Product stage (A1-A3)"
+      ],
+      "policy": "Never split a reported A1-A3 value into A1, A2 and A3."
+    },
+    "A1-A4": {
+      "kind": "nonstandard_or_comparison_aggregate",
+      "components": [
+        "A1",
+        "A2",
+        "A3",
+        "A4"
+      ],
+      "aliases": [
+        "A1-A4",
+        "A1–A4",
+        "Tot.A1-A4",
+        "Tot. A1-A4",
+        "Total A1-A4"
+      ],
+      "policy": "Capture if reported, but do not treat as a substitute for canonical module values."
+    },
+    "A1-A5": {
+      "kind": "construction_service_or_custom_aggregate",
+      "components": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5"
+      ],
+      "aliases": [
+        "A1-A5",
+        "A1–A5",
+        "Tot.A1-A5",
+        "Tot. A1-A5",
+        "Total A1-A5"
+      ],
+      "policy": "Capture separately; do not back-calculate constituent modules."
+    },
+    "B1-B7": {
+      "kind": "custom_aggregate",
+      "components": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ],
+      "aliases": [
+        "B1-B7",
+        "B1–B7",
+        "Use stage B1-B7"
+      ]
+    },
+    "C1-C4": {
+      "kind": "custom_aggregate",
+      "components": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "aliases": [
+        "C1-C4",
+        "C1–C4",
+        "End of life C1-C4",
+        "End-of-life C1-C4"
+      ]
+    }
+  },
+  "stage_group_aliases": {
+    "product_stage": [
+      "Product stage",
+      "Production stage",
+      "Product A1-A3"
+    ],
+    "construction_process_stage": [
+      "Construction process stage",
+      "Construction stage",
+      "Construction process"
+    ],
+    "use_stage": [
+      "Use stage",
+      "Use"
+    ],
+    "end_of_life_stage": [
+      "End of life stage",
+      "End-of-life stage",
+      "End of life",
+      "End-of-life"
+    ],
+    "beyond_system_boundary": [
+      "Resource recovery stage",
+      "Beyond the system boundary",
+      "Benefits and loads beyond the system boundary"
+    ]
+  },
+  "metadata_fields": {
+    "epd_uuid": {
+      "canonical_name": "EPD / process dataset UUID",
+      "aliases_en": [
+        "UUID",
+        "Dataset UUID",
+        "Data set UUID",
+        "EPD UUID",
+        "Process UUID"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "dataset_version": {
+      "canonical_name": "Dataset version",
+      "aliases_en": [
+        "Dataset version",
+        "Data set version",
+        "Version number of data set",
+        "Dataset revision"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "registration_number": {
+      "canonical_name": "EPD registration number",
+      "aliases_en": [
+        "EPD registration number",
+        "Registration number",
+        "EPD number",
+        "EPD No.",
+        "EPD No",
+        "Declaration number",
+        "EPD ID",
+        "No.",
+        "No"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "epd_version": {
+      "canonical_name": "EPD version",
+      "aliases_en": [
+        "EPD version",
+        "Version",
+        "Revision"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "product_name": {
+      "canonical_name": "Declared product / product name",
+      "aliases_en": [
+        "Declared product",
+        "Product name",
+        "Name of product",
+        "Product",
+        "Declared product(s)",
+        "Product name and identification",
+        "Name"
+      ],
+      "type": "string",
+      "required_for_core_parser": true
+    },
+    "product_description": {
+      "canonical_name": "Product description",
+      "aliases_en": [
+        "Product description",
+        "Description of product",
+        "Product information",
+        "Included products and description",
+        "Technology description"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "manufacturer": {
+      "canonical_name": "Manufacturer / declaration owner",
+      "aliases_en": [
+        "Manufacturer",
+        "EPD owner",
+        "Owner",
+        "Owner of declaration",
+        "Declaration owner",
+        "Owner of dataset",
+        "Owner of data set",
+        "Company",
+        "Producer"
+      ],
+      "type": "string",
+      "required_for_core_parser": true
+    },
+    "manufacturer_address": {
+      "canonical_name": "Manufacturer address",
+      "aliases_en": [
+        "Manufacturer address",
+        "Owner address",
+        "Address",
+        "Company address"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "programme_operator": {
+      "canonical_name": "Programme operator",
+      "aliases_en": [
+        "Programme operator",
+        "Program operator",
+        "Programme",
+        "Program",
+        "Issuer of the data set",
+        "Registration authority",
+        "Publisher"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "production_site": {
+      "canonical_name": "Production site",
+      "aliases_en": [
+        "Production site",
+        "Production site(s)",
+        "Name and location of production site(s)",
+        "Manufacturing site",
+        "Plant"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "geography": {
+      "canonical_name": "Geographical scope",
+      "aliases_en": [
+        "Geographical scope",
+        "Geographical coverage",
+        "Geographic scope",
+        "Geographic coverage",
+        "Reference geography",
+        "Location",
+        "Region",
+        "Country"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "publication_date": {
+      "canonical_name": "Publication / issue date",
+      "aliases_en": [
+        "Issued",
+        "Issue date",
+        "Date of issue",
+        "Publication date",
+        "Publication date of EPD",
+        "First release",
+        "Published"
+      ],
+      "type": "date",
+      "required_for_core_parser": false
+    },
+    "valid_until": {
+      "canonical_name": "Valid until",
+      "aliases_en": [
+        "Valid until",
+        "Valid to",
+        "Validity date",
+        "Expiry date",
+        "Expiration date",
+        "Data set valid until"
+      ],
+      "type": "date",
+      "required_for_core_parser": false
+    },
+    "reference_year": {
+      "canonical_name": "Reference year",
+      "aliases_en": [
+        "Reference year",
+        "Data reference year",
+        "Time representativeness",
+        "Year of production site data"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "last_revision_date": {
+      "canonical_name": "Date of last revision",
+      "aliases_en": [
+        "Date of last revision",
+        "Last revision",
+        "Revision date"
+      ],
+      "type": "date",
+      "required_for_core_parser": false
+    },
+    "epd_type": {
+      "canonical_name": "EPD type / representativeness",
+      "aliases_en": [
+        "EPD type",
+        "Dataset type",
+        "Data set type",
+        "Dataset subtype",
+        "Data set subtype",
+        "Product EPD",
+        "Industry EPD",
+        "Specific",
+        "Average",
+        "Representative",
+        "Template",
+        "Generic"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "system_boundary": {
+      "canonical_name": "System boundary / declared scope",
+      "aliases_en": [
+        "System boundary",
+        "System boundaries",
+        "Description of system boundaries",
+        "Cradle to gate",
+        "Cradle-to-gate",
+        "Cradle to grave",
+        "Cradle-to-grave",
+        "Cradle to gate with options",
+        "Cradle-to-gate with options"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "standard": {
+      "canonical_name": "EPD standard / compliance",
+      "aliases_en": [
+        "EN 15804",
+        "EN15804",
+        "EN 15804+A1",
+        "EN15804+A1",
+        "EN 15804+A2",
+        "EN15804+A2",
+        "Basis of calculation",
+        "Compliance system name",
+        "Compliance"
+      ],
+      "type": "string",
+      "required_for_core_parser": true
+    },
+    "impact_method": {
+      "canonical_name": "Impact assessment method",
+      "aliases_en": [
+        "EF 3.0",
+        "EF3.0",
+        "EF 3.1",
+        "EF3.1",
+        "CML",
+        "PEF",
+        "Characterisation method",
+        "Characterization method",
+        "Impact assessment method"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "pcr": {
+      "canonical_name": "Product Category Rules",
+      "aliases_en": [
+        "PCR",
+        "Product Category Rules",
+        "Product category rules",
+        "Core PCR",
+        "Complementary PCR",
+        "c-PCR",
+        "NPCR",
+        "LCA methodology report"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "background_database": {
+      "canonical_name": "Background database",
+      "aliases_en": [
+        "Background database",
+        "Database(s) and LCA software used",
+        "Database used",
+        "GaBi database",
+        "Sphera database",
+        "ecoinvent",
+        "Ecoinvent"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "lca_software": {
+      "canonical_name": "LCA software",
+      "aliases_en": [
+        "LCA software",
+        "Software used",
+        "LCA software used"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "verifier": {
+      "canonical_name": "Third-party verifier",
+      "aliases_en": [
+        "Third party verifier",
+        "Third-party verifier",
+        "Verifier",
+        "Reviewer name and institution",
+        "Independent verification",
+        "External verifier"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "verification_type": {
+      "canonical_name": "Verification type",
+      "aliases_en": [
+        "EPD verification",
+        "EPD process certification",
+        "Type of review",
+        "Verification"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "original_epd_url": {
+      "canonical_name": "Reference to original EPD",
+      "aliases_en": [
+        "Reference to original EPD",
+        "Original EPD",
+        "EPD URL",
+        "Document URL",
+        "Source URL"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "language": {
+      "canonical_name": "Language",
+      "aliases_en": [
+        "Language",
+        "Dataset language",
+        "Data set language"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "declared_unit_raw": {
+      "canonical_name": "Declared unit - raw text",
+      "aliases_en": [
+        "Declared unit",
+        "Declared/functional unit",
+        "Reference unit",
+        "Reference flow",
+        "Quantitative reference"
+      ],
+      "type": "string",
+      "required_for_core_parser": true
+    },
+    "functional_unit_raw": {
+      "canonical_name": "Functional unit - raw text",
+      "aliases_en": [
+        "Functional unit",
+        "Functional unit (FU)",
+        "FU"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "declared_quantity": {
+      "canonical_name": "Declared quantity",
+      "aliases_en": [
+        "Declared quantity",
+        "Reference quantity",
+        "Amount of declared unit",
+        "Amount of exchange with reference product"
+      ],
+      "type": "number",
+      "required_for_core_parser": false
+    },
+    "reference_service_life_years": {
+      "canonical_name": "Reference service life",
+      "aliases_en": [
+        "Reference Service Life",
+        "Reference service life",
+        "Reference service Life",
+        "RSL",
+        "Service life",
+        "Reference useful life"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "years"
+    },
+    "number_of_declared_variants": {
+      "canonical_name": "Number of declared datasets/product variations",
+      "aliases_en": [
+        "Number of declared datasets/product variations",
+        "Number of declared product variations",
+        "Number of declared datasets",
+        "Product variants"
+      ],
+      "type": "number",
+      "required_for_core_parser": false
+    },
+    "product_use": {
+      "canonical_name": "Product use / technical purpose",
+      "aliases_en": [
+        "Product(s) use",
+        "Product use",
+        "Intended use",
+        "Technical purpose",
+        "Application",
+        "Applications"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "un_cpc_code": {
+      "canonical_name": "UN CPC code",
+      "aliases_en": [
+        "UN CPC code",
+        "CPC code",
+        "UN CPC"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "gpi": {
+      "canonical_name": "Programme Instructions (GPI)",
+      "aliases_en": [
+        "General Programme Instructions",
+        "Programme Instructions",
+        "GPI"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "pcr_review_panel": {
+      "canonical_name": "PCR review panel",
+      "aliases_en": [
+        "PCR review panel",
+        "PCR review committee",
+        "PCR review panel chairperson"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "compliance_statement": {
+      "canonical_name": "Compliance statement",
+      "aliases_en": [
+        "Compliance statement",
+        "Statement of compliance",
+        "Complies with ISO 14025"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "comparability_statement": {
+      "canonical_name": "Comparability statement",
+      "aliases_en": [
+        "Comparability statement",
+        "Comparability",
+        "EPDs may not be comparable"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "product_category": {
+      "canonical_name": "Product category",
+      "aliases_en": [
+        "Product category",
+        "Product classification",
+        "Classification"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "product_composition": {
+      "canonical_name": "Product composition",
+      "aliases_en": [
+        "Product composition",
+        "Composition",
+        "Content declaration",
+        "Material composition"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "technical_specifications": {
+      "canonical_name": "Technical specifications",
+      "aliases_en": [
+        "Technical specifications",
+        "Technical information",
+        "Technical data",
+        "Physical properties"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "packaging_materials": {
+      "canonical_name": "Packaging materials",
+      "aliases_en": [
+        "Packaging materials",
+        "Packaging",
+        "Packaging material"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "manufacturing_process": {
+      "canonical_name": "Manufacturing process",
+      "aliases_en": [
+        "Manufacturing process",
+        "Production process",
+        "Manufacturing"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    },
+    "digital_signature": {
+      "canonical_name": "Digital signature",
+      "aliases_en": [
+        "Digital signature",
+        "Signature",
+        "Verification hash"
+      ],
+      "type": "string",
+      "required_for_core_parser": false
+    }
+  },
+  "material_properties": {
+    "mass_per_declared_unit": {
+      "canonical_name": "Mass of one declared unit",
+      "aliases_en": [
+        "Mass per declared unit",
+        "Mass of declared unit",
+        "Mass per functional unit",
+        "Mass of one unit",
+        "Mass value"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "kg"
+    },
+    "bulk_density": {
+      "canonical_name": "Bulk density",
+      "aliases_en": [
+        "Bulk density"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "kg/m3"
+    },
+    "gross_density": {
+      "canonical_name": "Gross density",
+      "aliases_en": [
+        "Gross density",
+        "Density"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "kg/m3"
+    },
+    "grammage": {
+      "canonical_name": "Grammage / weight per unit area",
+      "aliases_en": [
+        "Grammage",
+        "Weight per unit area",
+        "Mass per unit area",
+        "Area weight",
+        "Areal density"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "kg/m2"
+    },
+    "layer_thickness": {
+      "canonical_name": "Layer thickness",
+      "aliases_en": [
+        "Layer thickness",
+        "Thickness"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "m"
+    },
+    "linear_density": {
+      "canonical_name": "Linear density",
+      "aliases_en": [
+        "Linear density",
+        "Mass per unit length",
+        "Weight per metre",
+        "Weight per meter"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "kg/m"
+    },
+    "productiveness": {
+      "canonical_name": "Productiveness",
+      "aliases_en": [
+        "Productiveness",
+        "Yield",
+        "Coverage"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "m2"
+    },
+    "conversion_factor_to_1kg": {
+      "canonical_name": "Conversion factor to 1 kg",
+      "aliases_en": [
+        "Conversion factor to 1 kg",
+        "Conversion factor to 1 kg.",
+        "Conversion factor",
+        "Factor to 1 kg"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "-"
+    },
+    "biogenic_carbon_product": {
+      "canonical_name": "Biogenic carbon content in product",
+      "aliases_en": [
+        "Biogenic carbon content in product",
+        "Biogenic carbon product",
+        "Biogenic carbon in product"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "kg C"
+    },
+    "biogenic_carbon_packaging": {
+      "canonical_name": "Biogenic carbon content in accompanying packaging",
+      "aliases_en": [
+        "Biogenic carbon content in accompanying packaging",
+        "Biogenic carbon content in packaging",
+        "Biogenic carbon packaging",
+        "Biogenic carbon in packaging"
+      ],
+      "type": "number",
+      "required_for_core_parser": false,
+      "canonical_unit": "kg C"
+    }
+  },
+  "declared_unit_aliases": {
+    "kg": [
+      "kg",
+      "kilogram",
+      "kilograms"
+    ],
+    "t": [
+      "t",
+      "tonne",
+      "tonnes",
+      "metric tonne",
+      "metric ton"
+    ],
+    "m2": [
+      "m2",
+      "m²",
+      "square metre",
+      "square meter"
+    ],
+    "m3": [
+      "m3",
+      "m³",
+      "cubic metre",
+      "cubic meter"
+    ],
+    "m": [
+      "m",
+      "metre",
+      "meter",
+      "linear metre",
+      "linear meter"
+    ],
+    "piece": [
+      "piece",
+      "pieces",
+      "pcs",
+      "pc",
+      "unit",
+      "units",
+      "item",
+      "items"
+    ],
+    "MJ": [
+      "MJ"
+    ],
+    "kWh": [
+      "kWh"
+    ]
+  },
+  "unit_normalization": {
+    "kg_CO2_eq": [
+      "kg CO2 eq",
+      "kg CO₂ eq",
+      "kg CO2e",
+      "kg CO₂e",
+      "kg CO2-eqv.",
+      "kg CO2 eqv.",
+      "kg CO2 equivalent"
+    ],
+    "kg_CFC11_eq": [
+      "kg CFC 11 eq",
+      "kg CFC-11 eq",
+      "kg CFC 11e",
+      "kg CFC-11e",
+      "kg R11 eq",
+      "kg R11-eqv."
+    ],
+    "mol_H_eq": [
+      "mol H+ eq",
+      "mol H⁺ eq",
+      "mol H+ eqv.",
+      "mol H+-eqv."
+    ],
+    "kg_P_eq": [
+      "kg P eq",
+      "kg Pe",
+      "kg P-eq",
+      "kg P eqv."
+    ],
+    "kg_PO4_eq": [
+      "kg PO4 eq",
+      "kg PO4^3- eq",
+      "kg PO₄³⁻ eq",
+      "kg phosphate eq",
+      "kg Phosphate-eqv."
+    ],
+    "kg_N_eq": [
+      "kg N eq",
+      "kg Ne",
+      "kg N-eq",
+      "kg N eqv."
+    ],
+    "mol_N_eq": [
+      "mol N eq",
+      "mol Ne",
+      "mol N-eq",
+      "mol N eqv."
+    ],
+    "kg_NMVOC_eq": [
+      "kg NMVOC eq",
+      "kg NMVOCe",
+      "kg NMVOC eqv.",
+      "kg NMVOC-eqv."
+    ],
+    "kg_SO2_eq": [
+      "kg SO2 eq",
+      "kg SO₂ eq",
+      "kg SO2e",
+      "kg SO2-eqv."
+    ],
+    "kg_ethene_eq": [
+      "kg ethene eq",
+      "kg Ethene-eqv.",
+      "kg C2H4 eq",
+      "kg C₂H₄e",
+      "kg C2H4e",
+      "kg ethylene eq"
+    ],
+    "kg_Sb_eq": [
+      "kg Sb eq",
+      "kg Sbe",
+      "kg Sb-eqv.",
+      "kg Sb eqv."
+    ],
+    "m3_world_eq": [
+      "m3 world eq",
+      "m³ world eq",
+      "m3 world eqv.",
+      "m3 world eq deprived",
+      "m³ depr.",
+      "m3 depr.",
+      "m3 deprived"
+    ],
+    "kBq_U235_eq": [
+      "kBq U235 eq",
+      "kBq U235e",
+      "kBq U235 eqv.",
+      "kBq U235-eqv."
+    ],
+    "disease_incidence": [
+      "disease incidence",
+      "Disease incidence",
+      "incidence",
+      "Incidence"
+    ],
+    "CTUe": [
+      "CTUe"
+    ],
+    "CTUh": [
+      "CTUh"
+    ],
+    "MJ": [
+      "MJ",
+      "MJ net calorific value",
+      "MJ, net calorific value"
+    ],
+    "kg": [
+      "kg",
+      "kilogram",
+      "kilograms"
+    ],
+    "m3": [
+      "m3",
+      "m³",
+      "cubic metre",
+      "cubic meter"
+    ],
+    "m2": [
+      "m2",
+      "m²",
+      "square metre",
+      "square meter"
+    ],
+    "m": [
+      "m",
+      "metre",
+      "meter"
+    ],
+    "years": [
+      "year",
+      "years",
+      "yr",
+      "yrs",
+      "a"
+    ]
+  },
+  "impact_indicators": {
+    "EN15804_A1_CML": {
+      "GWP": {
+        "canonical_name": "Global warming potential",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "uuid": "77e416eb-a363-4258-a04e-171d843a6460",
+        "aliases_en": [
+          "GWP",
+          "Global warming potential",
+          "Global Warming Pot.",
+          "Global warming",
+          "Climate change"
+        ]
+      },
+      "ODP": {
+        "canonical_name": "Depletion potential of the stratospheric ozone layer",
+        "category": "core_impact",
+        "unit": "kg R11 eq",
+        "uuid": "06dcd26f-025f-401a-a7c1-5e457eb54637",
+        "aliases_en": [
+          "ODP",
+          "Ozone depletion potential",
+          "Ozone depletion Pot.",
+          "Depletion potential of the stratospheric ozone layer"
+        ],
+        "unit_aliases": [
+          "kg R11 eq",
+          "kg CFC-11 eq",
+          "kg CFC 11 eq"
+        ]
+      },
+      "AP": {
+        "canonical_name": "Acidification potential of soil and water",
+        "category": "core_impact",
+        "unit": "kg SO2 eq",
+        "uuid": "b4274add-93b7-4905-a5e4-2e878c4e4216",
+        "aliases_en": [
+          "AP",
+          "Acidification",
+          "Acidification potential",
+          "Acidification potential of soil and water"
+        ]
+      },
+      "EP": {
+        "canonical_name": "Eutrophication potential",
+        "category": "core_impact",
+        "unit": "kg phosphate eq",
+        "uuid": "f58827d0-b407-4ec6-be75-8b69efb98a0f",
+        "aliases_en": [
+          "EP",
+          "Eutrophication",
+          "Eutrophication potential",
+          "Eutrophication potential total"
+        ],
+        "unit_aliases": [
+          "kg PO4 eq",
+          "kg PO4^3- eq",
+          "kg phosphate eq"
+        ]
+      },
+      "POCP": {
+        "canonical_name": "Formation potential of tropospheric ozone",
+        "category": "core_impact",
+        "unit": "kg ethene eq",
+        "uuid": "1e84a202-dae6-42aa-9e9d-71ea48b8be00",
+        "aliases_en": [
+          "POCP",
+          "POCP (smog)",
+          "POCP (“smog”)",
+          "POCP (\"smog\")",
+          "Photochemical ozone creation potential",
+          "Formation potential of tropospheric ozone",
+          "Photochemical ozone formation"
+        ],
+        "unit_aliases": [
+          "kg ethene eq",
+          "kg C2H4 eq",
+          "kg ethylene eq"
+        ]
+      },
+      "ADPE": {
+        "canonical_name": "Abiotic depletion potential for non-fossil resources",
+        "category": "core_impact",
+        "unit": "kg Sb eq",
+        "uuid": "f7c73bb9-ab1a-4249-9c6d-379a0de6f67e",
+        "aliases_en": [
+          "ADPE",
+          "ADP-elements",
+          "ADP elements",
+          "Abiotic depletion potential for non fossil resources",
+          "Abiotic depletion potential for non-fossil resources",
+          "Abiotic depletion elements"
+        ]
+      },
+      "ADPF": {
+        "canonical_name": "Abiotic depletion potential for fossil resources",
+        "category": "core_impact",
+        "unit": "MJ",
+        "uuid": "804ebcdf-309d-4098-8ed8-fdaf2f389981",
+        "aliases_en": [
+          "ADPF",
+          "ADP-fossil",
+          "ADP fossil",
+          "Abiotic depletion potential for fossil resources",
+          "Abiotic depletion fossil"
+        ]
+      }
+    },
+    "EN15804_A2_EF3.0": {
+      "GWP-total": {
+        "canonical_name": "Global Warming Potential - total",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-total",
+          "GWP total",
+          "GWP – total",
+          "GWP - total",
+          "Global Warming Potential - total",
+          "Global warming potential total",
+          "Climate change - total",
+          "Climate change total"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "6a37f984-a4b3-458a-a20a-64418c145fa2",
+          "EF3.1": "a7ea142a-9749-11ed-a8fc-0242ac120002"
+        },
+        "conditional_aliases": {
+          "GWP": "Only map bare 'GWP' to GWP-total if EN15804+A2 is positively detected and context supports total GWP."
+        }
+      },
+      "GWP-fossil": {
+        "canonical_name": "Global Warming Potential - fossil fuels",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-fossil",
+          "GWP fossil",
+          "GWP – fossil",
+          "GWP - fossil",
+          "Global Warming Potential - fossil fuels",
+          "Global Warming Potential - fossil",
+          "Global warming potential fossil",
+          "Climate change - fossil",
+          "Climate change fossil"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "5f635281-343e-44fb-83df-1971b155e6b6",
+          "EF3.1": "a7ea19c0-9749-11ed-a8fc-0242ac120002"
+        }
+      },
+      "GWP-biogenic": {
+        "canonical_name": "Global Warming Potential - biogenic",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-biogenic",
+          "GWP biogenic",
+          "GWP – biogenic",
+          "GWP - biogenic",
+          "Global Warming Potential - biogenic",
+          "Global warming potential biogenic",
+          "Climate change - biogenic",
+          "Climate change biogenic"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "2356e1ab-0185-4db5-86e5-16de51c7485c",
+          "EF3.1": "a7ea186c-9749-11ed-a8fc-0242ac120002"
+        }
+      },
+      "GWP-luluc": {
+        "canonical_name": "Global Warming Potential - land use and land use change",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-luluc",
+          "GWP LULUC",
+          "GWP – LULUC",
+          "GWP - LULUC",
+          "Global Warming Potential - land use and land use change",
+          "Global Warming Potential - land use and land-use change",
+          "Global warming potential land use and land use change",
+          "Climate change - land use and land use change",
+          "Climate change LULUC"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "4331bbdb-978a-490d-8707-eeb047f01a55",
+          "EF3.1": "a7ea1ae2-9749-11ed-a8fc-0242ac120002"
+        }
+      },
+      "ODP": {
+        "canonical_name": "Depletion potential of the stratospheric ozone layer",
+        "category": "core_impact",
+        "unit": "kg CFC-11 eq",
+        "aliases_en": [
+          "ODP",
+          "Ozone depletion",
+          "Ozone depletion potential",
+          "Ozone depletion pot.",
+          "Depletion potential of the stratospheric ozone layer"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c629d6-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c629d6-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "AP": {
+        "canonical_name": "Acidification potential, accumulated exceedance",
+        "category": "core_impact",
+        "unit": "mol H+ eq",
+        "aliases_en": [
+          "AP",
+          "Acidification",
+          "Acidification potential",
+          "Acidification potential, accumulated exceedance",
+          "Acidification potential accumulated exceedance"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c611c6-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c611c6-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "EP-freshwater": {
+        "canonical_name": "Eutrophication potential - freshwater",
+        "category": "core_impact",
+        "unit": "kg P eq",
+        "aliases_en": [
+          "EP-freshwater",
+          "EP freshwater",
+          "Eutrophication potential - freshwater",
+          "Eutrophication - freshwater",
+          "Eutrophication – aquatic freshwater",
+          "Freshwater eutrophication",
+          "Eutrophication aquatic freshwater"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b53ec18f-7377-4ad3-86eb-cc3f4f276b2b",
+          "EF3.1": "b53ec18f-7377-4ad3-86eb-cc3f4f276b2b"
+        },
+        "alternate_reported_units": [
+          {
+            "unit": "kg PO4 eq",
+            "policy": "capture_as_alternate_representation",
+            "notes": "Some English EPDs show a converted phosphate-equivalent row in addition to the canonical kg P eq row. Prefer kg P eq as canonical EN15804+A2 value."
+          }
+        ]
+      },
+      "EP-marine": {
+        "canonical_name": "Eutrophication potential - marine",
+        "category": "core_impact",
+        "unit": "kg N eq",
+        "aliases_en": [
+          "EP-marine",
+          "EP marine",
+          "Eutrophication potential - marine",
+          "Eutrophication - marine",
+          "Eutrophication – aquatic marine",
+          "Marine eutrophication",
+          "Eutrophication aquatic marine"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c619fa-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c619fa-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "EP-terrestrial": {
+        "canonical_name": "Eutrophication potential - terrestrial",
+        "category": "core_impact",
+        "unit": "mol N eq",
+        "aliases_en": [
+          "EP-terrestrial",
+          "EP terrestrial",
+          "Eutrophication potential - terrestrial",
+          "Eutrophication - terrestrial",
+          "Eutrophication – terrestrial",
+          "Terrestrial eutrophication"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c614d2-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c614d2-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "POCP": {
+        "canonical_name": "Photochemical Ozone Creation Potential",
+        "category": "core_impact",
+        "unit": "kg NMVOC eq",
+        "aliases_en": [
+          "POCP",
+          "POFP",
+          "POCP (smog)",
+          "POCP (“smog”)",
+          "POCP (\"smog\")",
+          "Photochemical Ozone Creation Potential",
+          "Photochemical ozone formation",
+          "Photochemical ozone formation potential",
+          "Photochemical ozone creation",
+          "Photochemical zone formation",
+          "Formation potential of tropospheric ozone"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c610fe-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c610fe-def3-11e6-bf01-fe55135034f3"
+        },
+        "notes": "POFP occurs in some English EPD tables; normalize to POCP when +A2 context/unit kg NMVOC eq confirms it."
+      },
+      "ADPE": {
+        "canonical_name": "Abiotic depletion potential - non-fossil resources",
+        "category": "core_impact",
+        "unit": "kg Sb eq",
+        "aliases_en": [
+          "ADPE",
+          "ADP-elements",
+          "ADP elements",
+          "ADPm",
+          "ADP-minerals & metals",
+          "ADP minerals & metals",
+          "ADP-minerals and metals",
+          "Abiotic depletion potential - non-fossil resources",
+          "Abiotic Depletion Potential - minerals and metals",
+          "Abiotic depletion potential for non-fossil resources"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad6494-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad6494-c78d-11e6-9d9d-cec0c932ce01"
+        }
+      },
+      "ADPF": {
+        "canonical_name": "Abiotic depletion potential - fossil resources",
+        "category": "core_impact",
+        "unit": "MJ",
+        "aliases_en": [
+          "ADPF",
+          "ADP-fossil",
+          "ADP fossil",
+          "ADPf",
+          "ADP-fossil resources",
+          "Abiotic depletion potential - fossil resources",
+          "Abiotic Depletion Potential - fossil fuels",
+          "Abiotic depletion potential for fossil resources"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad6110-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad6110-c78d-11e6-9d9d-cec0c932ce01"
+        }
+      },
+      "WDP": {
+        "canonical_name": "Water (user) deprivation potential",
+        "category": "core_impact",
+        "unit": "m3 world eq deprived",
+        "aliases_en": [
+          "WDP",
+          "Water (user) deprivation potential",
+          "Water user deprivation potential",
+          "Water deprivation potential",
+          "Water use",
+          "Water scarcity",
+          "Potential user deprivation",
+          "Water consumption deprivation"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad66ce-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad66ce-c78d-11e6-9d9d-cec0c932ce01"
+        },
+        "unit_aliases": [
+          "m3 world eqv.",
+          "m3 world eq",
+          "m3 depr.",
+          "m3 deprived",
+          "m3"
+        ],
+        "disambiguation": "Bare 'Water use' or bare m3 must only map to WDP inside the environmental-impact section. In resource-use sections, m3 water is usually FW."
+      },
+      "PM": {
+        "canonical_name": "Potential incidence of disease due to PM emissions",
+        "category": "additional_impact",
+        "unit": "disease incidence",
+        "aliases_en": [
+          "PM",
+          "Particulate matter",
+          "Particulate Matter emissions",
+          "Potential incidence of disease due to PM emissions",
+          "Particulate matter emissions"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c602c6-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c602c6-def3-11e6-bf01-fe55135034f3"
+        },
+        "unit_aliases": [
+          "disease incidence",
+          "incidence"
+        ]
+      },
+      "IRP": {
+        "canonical_name": "Potential Human exposure efficiency relative to U235",
+        "category": "additional_impact",
+        "unit": "kBq U235 eq",
+        "aliases_en": [
+          "IRP",
+          "IR",
+          "Ionizing radiation",
+          "Ionising radiation",
+          "Ionizing radiation - human health",
+          "Ionising radiation - human health",
+          "Potential Human exposure efficiency relative to U235"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c632be-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c632be-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "ETP-fw": {
+        "canonical_name": "Potential Comparative Toxic Unit for ecosystems",
+        "category": "additional_impact",
+        "unit": "CTUe",
+        "aliases_en": [
+          "ETP-fw",
+          "ETP freshwater",
+          "Ecotoxicity (freshwater)",
+          "Ecotoxicity freshwater",
+          "Eco toxicity - freshwater",
+          "Freshwater ecotoxicity",
+          "Potential Comparative Toxic Unit for ecosystems"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "ee1082d1-b0f7-43ca-a1f0-21e2a4a74511",
+          "EF3.1": "05316e7a-b254-4bea-9cf0-6bf33eb5c630"
+        }
+      },
+      "HTP-c": {
+        "canonical_name": "Potential Comparative Toxic Unit for humans - cancer effects",
+        "category": "additional_impact",
+        "unit": "CTUh",
+        "aliases_en": [
+          "HTP-c",
+          "Human toxicity, cancer",
+          "Human toxicity - cancer",
+          "Human toxicity - cancer effects",
+          "Human toxicity – cancer effects",
+          "Human toxicity carcinogenic",
+          "Potential Comparative Toxic Unit for humans - cancer effects"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "2299222a-bbd8-474f-9d4f-4dd1f18aea7c",
+          "EF3.1": "2299222a-bbd8-474f-9d4f-4dd1f18aea7c"
+        }
+      },
+      "HTP-nc": {
+        "canonical_name": "Potential Comparative Toxic Unit for humans - non-cancer effects",
+        "category": "additional_impact",
+        "unit": "CTUh",
+        "aliases_en": [
+          "HTP-nc",
+          "Human tox. non-cancer",
+          "Human toxicity, non-cancer",
+          "Human toxicity - non-cancer",
+          "Human toxicity - non-cancer effects",
+          "Human toxicity – non cancer effects",
+          "Human toxicity non-carcinogenic",
+          "Potential Comparative Toxic Unit for humans - non-cancer effects"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "3af763a5-b7a1-48c9-9cee-1f223481fcef",
+          "EF3.1": "7cfdcfcf-b222-4b26-888a-a55f9fbf7ac8"
+        }
+      },
+      "SQP": {
+        "canonical_name": "Potential Soil quality index",
+        "category": "additional_impact",
+        "unit": "unitless",
+        "aliases_en": [
+          "SQP",
+          "Soil quality",
+          "Soil Quality (dimensionless)",
+          "Soil quality potential",
+          "Potential Soil quality index",
+          "Land use related impacts/soil quality"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad6890-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad6890-c78d-11e6-9d9d-cec0c932ce01"
+        },
+        "unit_aliases": [
+          "unitless",
+          "dimensionless",
+          "-",
+          "1"
+        ]
+      },
+      "GWP-GHG": {
+        "canonical_name": "Global Warming Potential - greenhouse gases excluding biogenic CO2 uptake/emissions and stored biogenic carbon",
+        "category": "additional_climate_indicator",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-GHG",
+          "GWP GHG",
+          "GWP-GHG (IPCC AR5)",
+          "Global warming potential - greenhouse gases",
+          "Climate impact indicator GWP-GHG"
+        ],
+        "uuid_by_method": {},
+        "notes": "Keep as a separate indicator. Do not silently replace GWP-total."
+      }
+    },
+    "EN15804_A2_EF3.1": {
+      "GWP-total": {
+        "canonical_name": "Global Warming Potential - total",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-total",
+          "GWP total",
+          "GWP – total",
+          "GWP - total",
+          "Global Warming Potential - total",
+          "Global warming potential total",
+          "Climate change - total",
+          "Climate change total"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "6a37f984-a4b3-458a-a20a-64418c145fa2",
+          "EF3.1": "a7ea142a-9749-11ed-a8fc-0242ac120002"
+        },
+        "conditional_aliases": {
+          "GWP": "Only map bare 'GWP' to GWP-total if EN15804+A2 is positively detected and context supports total GWP."
+        }
+      },
+      "GWP-fossil": {
+        "canonical_name": "Global Warming Potential - fossil fuels",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-fossil",
+          "GWP fossil",
+          "GWP – fossil",
+          "GWP - fossil",
+          "Global Warming Potential - fossil fuels",
+          "Global Warming Potential - fossil",
+          "Global warming potential fossil",
+          "Climate change - fossil",
+          "Climate change fossil"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "5f635281-343e-44fb-83df-1971b155e6b6",
+          "EF3.1": "a7ea19c0-9749-11ed-a8fc-0242ac120002"
+        }
+      },
+      "GWP-biogenic": {
+        "canonical_name": "Global Warming Potential - biogenic",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-biogenic",
+          "GWP biogenic",
+          "GWP – biogenic",
+          "GWP - biogenic",
+          "Global Warming Potential - biogenic",
+          "Global warming potential biogenic",
+          "Climate change - biogenic",
+          "Climate change biogenic"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "2356e1ab-0185-4db5-86e5-16de51c7485c",
+          "EF3.1": "a7ea186c-9749-11ed-a8fc-0242ac120002"
+        }
+      },
+      "GWP-luluc": {
+        "canonical_name": "Global Warming Potential - land use and land use change",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-luluc",
+          "GWP LULUC",
+          "GWP – LULUC",
+          "GWP - LULUC",
+          "Global Warming Potential - land use and land use change",
+          "Global Warming Potential - land use and land-use change",
+          "Global warming potential land use and land use change",
+          "Climate change - land use and land use change",
+          "Climate change LULUC"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "4331bbdb-978a-490d-8707-eeb047f01a55",
+          "EF3.1": "a7ea1ae2-9749-11ed-a8fc-0242ac120002"
+        }
+      },
+      "ODP": {
+        "canonical_name": "Depletion potential of the stratospheric ozone layer",
+        "category": "core_impact",
+        "unit": "kg CFC-11 eq",
+        "aliases_en": [
+          "ODP",
+          "Ozone depletion",
+          "Ozone depletion potential",
+          "Ozone depletion pot.",
+          "Depletion potential of the stratospheric ozone layer"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c629d6-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c629d6-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "AP": {
+        "canonical_name": "Acidification potential, accumulated exceedance",
+        "category": "core_impact",
+        "unit": "mol H+ eq",
+        "aliases_en": [
+          "AP",
+          "Acidification",
+          "Acidification potential",
+          "Acidification potential, accumulated exceedance",
+          "Acidification potential accumulated exceedance"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c611c6-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c611c6-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "EP-freshwater": {
+        "canonical_name": "Eutrophication potential - freshwater",
+        "category": "core_impact",
+        "unit": "kg P eq",
+        "aliases_en": [
+          "EP-freshwater",
+          "EP freshwater",
+          "Eutrophication potential - freshwater",
+          "Eutrophication - freshwater",
+          "Eutrophication – aquatic freshwater",
+          "Freshwater eutrophication",
+          "Eutrophication aquatic freshwater"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b53ec18f-7377-4ad3-86eb-cc3f4f276b2b",
+          "EF3.1": "b53ec18f-7377-4ad3-86eb-cc3f4f276b2b"
+        },
+        "alternate_reported_units": [
+          {
+            "unit": "kg PO4 eq",
+            "policy": "capture_as_alternate_representation",
+            "notes": "Some English EPDs show a converted phosphate-equivalent row in addition to the canonical kg P eq row. Prefer kg P eq as canonical EN15804+A2 value."
+          }
+        ]
+      },
+      "EP-marine": {
+        "canonical_name": "Eutrophication potential - marine",
+        "category": "core_impact",
+        "unit": "kg N eq",
+        "aliases_en": [
+          "EP-marine",
+          "EP marine",
+          "Eutrophication potential - marine",
+          "Eutrophication - marine",
+          "Eutrophication – aquatic marine",
+          "Marine eutrophication",
+          "Eutrophication aquatic marine"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c619fa-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c619fa-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "EP-terrestrial": {
+        "canonical_name": "Eutrophication potential - terrestrial",
+        "category": "core_impact",
+        "unit": "mol N eq",
+        "aliases_en": [
+          "EP-terrestrial",
+          "EP terrestrial",
+          "Eutrophication potential - terrestrial",
+          "Eutrophication - terrestrial",
+          "Eutrophication – terrestrial",
+          "Terrestrial eutrophication"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c614d2-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c614d2-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "POCP": {
+        "canonical_name": "Photochemical Ozone Creation Potential",
+        "category": "core_impact",
+        "unit": "kg NMVOC eq",
+        "aliases_en": [
+          "POCP",
+          "POFP",
+          "POCP (smog)",
+          "POCP (“smog”)",
+          "POCP (\"smog\")",
+          "Photochemical Ozone Creation Potential",
+          "Photochemical ozone formation",
+          "Photochemical ozone formation potential",
+          "Photochemical ozone creation",
+          "Photochemical zone formation",
+          "Formation potential of tropospheric ozone"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c610fe-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c610fe-def3-11e6-bf01-fe55135034f3"
+        },
+        "notes": "POFP occurs in some English EPD tables; normalize to POCP when +A2 context/unit kg NMVOC eq confirms it."
+      },
+      "ADPE": {
+        "canonical_name": "Abiotic depletion potential - non-fossil resources",
+        "category": "core_impact",
+        "unit": "kg Sb eq",
+        "aliases_en": [
+          "ADPE",
+          "ADP-elements",
+          "ADP elements",
+          "ADPm",
+          "ADP-minerals & metals",
+          "ADP minerals & metals",
+          "ADP-minerals and metals",
+          "Abiotic depletion potential - non-fossil resources",
+          "Abiotic Depletion Potential - minerals and metals",
+          "Abiotic depletion potential for non-fossil resources"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad6494-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad6494-c78d-11e6-9d9d-cec0c932ce01"
+        }
+      },
+      "ADPF": {
+        "canonical_name": "Abiotic depletion potential - fossil resources",
+        "category": "core_impact",
+        "unit": "MJ",
+        "aliases_en": [
+          "ADPF",
+          "ADP-fossil",
+          "ADP fossil",
+          "ADPf",
+          "ADP-fossil resources",
+          "Abiotic depletion potential - fossil resources",
+          "Abiotic Depletion Potential - fossil fuels",
+          "Abiotic depletion potential for fossil resources"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad6110-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad6110-c78d-11e6-9d9d-cec0c932ce01"
+        }
+      },
+      "WDP": {
+        "canonical_name": "Water (user) deprivation potential",
+        "category": "core_impact",
+        "unit": "m3 world eq deprived",
+        "aliases_en": [
+          "WDP",
+          "Water (user) deprivation potential",
+          "Water user deprivation potential",
+          "Water deprivation potential",
+          "Water use",
+          "Water scarcity",
+          "Potential user deprivation",
+          "Water consumption deprivation"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad66ce-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad66ce-c78d-11e6-9d9d-cec0c932ce01"
+        },
+        "unit_aliases": [
+          "m3 world eqv.",
+          "m3 world eq",
+          "m3 depr.",
+          "m3 deprived",
+          "m3"
+        ],
+        "disambiguation": "Bare 'Water use' or bare m3 must only map to WDP inside the environmental-impact section. In resource-use sections, m3 water is usually FW."
+      },
+      "PM": {
+        "canonical_name": "Potential incidence of disease due to PM emissions",
+        "category": "additional_impact",
+        "unit": "disease incidence",
+        "aliases_en": [
+          "PM",
+          "Particulate matter",
+          "Particulate Matter emissions",
+          "Potential incidence of disease due to PM emissions",
+          "Particulate matter emissions"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c602c6-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c602c6-def3-11e6-bf01-fe55135034f3"
+        },
+        "unit_aliases": [
+          "disease incidence",
+          "incidence"
+        ]
+      },
+      "IRP": {
+        "canonical_name": "Potential Human exposure efficiency relative to U235",
+        "category": "additional_impact",
+        "unit": "kBq U235 eq",
+        "aliases_en": [
+          "IRP",
+          "IR",
+          "Ionizing radiation",
+          "Ionising radiation",
+          "Ionizing radiation - human health",
+          "Ionising radiation - human health",
+          "Potential Human exposure efficiency relative to U235"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c632be-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c632be-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "ETP-fw": {
+        "canonical_name": "Potential Comparative Toxic Unit for ecosystems",
+        "category": "additional_impact",
+        "unit": "CTUe",
+        "aliases_en": [
+          "ETP-fw",
+          "ETP freshwater",
+          "Ecotoxicity (freshwater)",
+          "Ecotoxicity freshwater",
+          "Eco toxicity - freshwater",
+          "Freshwater ecotoxicity",
+          "Potential Comparative Toxic Unit for ecosystems"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "ee1082d1-b0f7-43ca-a1f0-21e2a4a74511",
+          "EF3.1": "05316e7a-b254-4bea-9cf0-6bf33eb5c630"
+        }
+      },
+      "HTP-c": {
+        "canonical_name": "Potential Comparative Toxic Unit for humans - cancer effects",
+        "category": "additional_impact",
+        "unit": "CTUh",
+        "aliases_en": [
+          "HTP-c",
+          "Human toxicity, cancer",
+          "Human toxicity - cancer",
+          "Human toxicity - cancer effects",
+          "Human toxicity – cancer effects",
+          "Human toxicity carcinogenic",
+          "Potential Comparative Toxic Unit for humans - cancer effects"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "2299222a-bbd8-474f-9d4f-4dd1f18aea7c",
+          "EF3.1": "2299222a-bbd8-474f-9d4f-4dd1f18aea7c"
+        }
+      },
+      "HTP-nc": {
+        "canonical_name": "Potential Comparative Toxic Unit for humans - non-cancer effects",
+        "category": "additional_impact",
+        "unit": "CTUh",
+        "aliases_en": [
+          "HTP-nc",
+          "Human tox. non-cancer",
+          "Human toxicity, non-cancer",
+          "Human toxicity - non-cancer",
+          "Human toxicity - non-cancer effects",
+          "Human toxicity – non cancer effects",
+          "Human toxicity non-carcinogenic",
+          "Potential Comparative Toxic Unit for humans - non-cancer effects"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "3af763a5-b7a1-48c9-9cee-1f223481fcef",
+          "EF3.1": "7cfdcfcf-b222-4b26-888a-a55f9fbf7ac8"
+        }
+      },
+      "SQP": {
+        "canonical_name": "Potential Soil quality index",
+        "category": "additional_impact",
+        "unit": "unitless",
+        "aliases_en": [
+          "SQP",
+          "Soil quality",
+          "Soil Quality (dimensionless)",
+          "Soil quality potential",
+          "Potential Soil quality index",
+          "Land use related impacts/soil quality"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad6890-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad6890-c78d-11e6-9d9d-cec0c932ce01"
+        },
+        "unit_aliases": [
+          "unitless",
+          "dimensionless",
+          "-",
+          "1"
+        ]
+      },
+      "GWP-GHG": {
+        "canonical_name": "Global Warming Potential - greenhouse gases excluding biogenic CO2 uptake/emissions and stored biogenic carbon",
+        "category": "additional_climate_indicator",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-GHG",
+          "GWP GHG",
+          "GWP-GHG (IPCC AR5)",
+          "Global warming potential - greenhouse gases",
+          "Climate impact indicator GWP-GHG"
+        ],
+        "uuid_by_method": {},
+        "notes": "Keep as a separate indicator. Do not silently replace GWP-total."
+      }
+    },
+    "EN15804_A2_UNKNOWN_EF": {
+      "GWP-total": {
+        "canonical_name": "Global Warming Potential - total",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-total",
+          "GWP total",
+          "GWP – total",
+          "GWP - total",
+          "Global Warming Potential - total",
+          "Global warming potential total",
+          "Climate change - total",
+          "Climate change total"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "6a37f984-a4b3-458a-a20a-64418c145fa2",
+          "EF3.1": "a7ea142a-9749-11ed-a8fc-0242ac120002"
+        },
+        "conditional_aliases": {
+          "GWP": "Only map bare 'GWP' to GWP-total if EN15804+A2 is positively detected and context supports total GWP."
+        }
+      },
+      "GWP-fossil": {
+        "canonical_name": "Global Warming Potential - fossil fuels",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-fossil",
+          "GWP fossil",
+          "GWP – fossil",
+          "GWP - fossil",
+          "Global Warming Potential - fossil fuels",
+          "Global Warming Potential - fossil",
+          "Global warming potential fossil",
+          "Climate change - fossil",
+          "Climate change fossil"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "5f635281-343e-44fb-83df-1971b155e6b6",
+          "EF3.1": "a7ea19c0-9749-11ed-a8fc-0242ac120002"
+        }
+      },
+      "GWP-biogenic": {
+        "canonical_name": "Global Warming Potential - biogenic",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-biogenic",
+          "GWP biogenic",
+          "GWP – biogenic",
+          "GWP - biogenic",
+          "Global Warming Potential - biogenic",
+          "Global warming potential biogenic",
+          "Climate change - biogenic",
+          "Climate change biogenic"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "2356e1ab-0185-4db5-86e5-16de51c7485c",
+          "EF3.1": "a7ea186c-9749-11ed-a8fc-0242ac120002"
+        }
+      },
+      "GWP-luluc": {
+        "canonical_name": "Global Warming Potential - land use and land use change",
+        "category": "core_impact",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-luluc",
+          "GWP LULUC",
+          "GWP – LULUC",
+          "GWP - LULUC",
+          "Global Warming Potential - land use and land use change",
+          "Global Warming Potential - land use and land-use change",
+          "Global warming potential land use and land use change",
+          "Climate change - land use and land use change",
+          "Climate change LULUC"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "4331bbdb-978a-490d-8707-eeb047f01a55",
+          "EF3.1": "a7ea1ae2-9749-11ed-a8fc-0242ac120002"
+        }
+      },
+      "ODP": {
+        "canonical_name": "Depletion potential of the stratospheric ozone layer",
+        "category": "core_impact",
+        "unit": "kg CFC-11 eq",
+        "aliases_en": [
+          "ODP",
+          "Ozone depletion",
+          "Ozone depletion potential",
+          "Ozone depletion pot.",
+          "Depletion potential of the stratospheric ozone layer"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c629d6-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c629d6-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "AP": {
+        "canonical_name": "Acidification potential, accumulated exceedance",
+        "category": "core_impact",
+        "unit": "mol H+ eq",
+        "aliases_en": [
+          "AP",
+          "Acidification",
+          "Acidification potential",
+          "Acidification potential, accumulated exceedance",
+          "Acidification potential accumulated exceedance"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c611c6-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c611c6-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "EP-freshwater": {
+        "canonical_name": "Eutrophication potential - freshwater",
+        "category": "core_impact",
+        "unit": "kg P eq",
+        "aliases_en": [
+          "EP-freshwater",
+          "EP freshwater",
+          "Eutrophication potential - freshwater",
+          "Eutrophication - freshwater",
+          "Eutrophication – aquatic freshwater",
+          "Freshwater eutrophication",
+          "Eutrophication aquatic freshwater"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b53ec18f-7377-4ad3-86eb-cc3f4f276b2b",
+          "EF3.1": "b53ec18f-7377-4ad3-86eb-cc3f4f276b2b"
+        },
+        "alternate_reported_units": [
+          {
+            "unit": "kg PO4 eq",
+            "policy": "capture_as_alternate_representation",
+            "notes": "Some English EPDs show a converted phosphate-equivalent row in addition to the canonical kg P eq row. Prefer kg P eq as canonical EN15804+A2 value."
+          }
+        ]
+      },
+      "EP-marine": {
+        "canonical_name": "Eutrophication potential - marine",
+        "category": "core_impact",
+        "unit": "kg N eq",
+        "aliases_en": [
+          "EP-marine",
+          "EP marine",
+          "Eutrophication potential - marine",
+          "Eutrophication - marine",
+          "Eutrophication – aquatic marine",
+          "Marine eutrophication",
+          "Eutrophication aquatic marine"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c619fa-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c619fa-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "EP-terrestrial": {
+        "canonical_name": "Eutrophication potential - terrestrial",
+        "category": "core_impact",
+        "unit": "mol N eq",
+        "aliases_en": [
+          "EP-terrestrial",
+          "EP terrestrial",
+          "Eutrophication potential - terrestrial",
+          "Eutrophication - terrestrial",
+          "Eutrophication – terrestrial",
+          "Terrestrial eutrophication"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c614d2-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c614d2-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "POCP": {
+        "canonical_name": "Photochemical Ozone Creation Potential",
+        "category": "core_impact",
+        "unit": "kg NMVOC eq",
+        "aliases_en": [
+          "POCP",
+          "POFP",
+          "POCP (smog)",
+          "POCP (“smog”)",
+          "POCP (\"smog\")",
+          "Photochemical Ozone Creation Potential",
+          "Photochemical ozone formation",
+          "Photochemical ozone formation potential",
+          "Photochemical ozone creation",
+          "Photochemical zone formation",
+          "Formation potential of tropospheric ozone"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c610fe-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c610fe-def3-11e6-bf01-fe55135034f3"
+        },
+        "notes": "POFP occurs in some English EPD tables; normalize to POCP when +A2 context/unit kg NMVOC eq confirms it."
+      },
+      "ADPE": {
+        "canonical_name": "Abiotic depletion potential - non-fossil resources",
+        "category": "core_impact",
+        "unit": "kg Sb eq",
+        "aliases_en": [
+          "ADPE",
+          "ADP-elements",
+          "ADP elements",
+          "ADPm",
+          "ADP-minerals & metals",
+          "ADP minerals & metals",
+          "ADP-minerals and metals",
+          "Abiotic depletion potential - non-fossil resources",
+          "Abiotic Depletion Potential - minerals and metals",
+          "Abiotic depletion potential for non-fossil resources"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad6494-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad6494-c78d-11e6-9d9d-cec0c932ce01"
+        }
+      },
+      "ADPF": {
+        "canonical_name": "Abiotic depletion potential - fossil resources",
+        "category": "core_impact",
+        "unit": "MJ",
+        "aliases_en": [
+          "ADPF",
+          "ADP-fossil",
+          "ADP fossil",
+          "ADPf",
+          "ADP-fossil resources",
+          "Abiotic depletion potential - fossil resources",
+          "Abiotic Depletion Potential - fossil fuels",
+          "Abiotic depletion potential for fossil resources"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad6110-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad6110-c78d-11e6-9d9d-cec0c932ce01"
+        }
+      },
+      "WDP": {
+        "canonical_name": "Water (user) deprivation potential",
+        "category": "core_impact",
+        "unit": "m3 world eq deprived",
+        "aliases_en": [
+          "WDP",
+          "Water (user) deprivation potential",
+          "Water user deprivation potential",
+          "Water deprivation potential",
+          "Water use",
+          "Water scarcity",
+          "Potential user deprivation",
+          "Water consumption deprivation"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad66ce-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad66ce-c78d-11e6-9d9d-cec0c932ce01"
+        },
+        "unit_aliases": [
+          "m3 world eqv.",
+          "m3 world eq",
+          "m3 depr.",
+          "m3 deprived",
+          "m3"
+        ],
+        "disambiguation": "Bare 'Water use' or bare m3 must only map to WDP inside the environmental-impact section. In resource-use sections, m3 water is usually FW."
+      },
+      "PM": {
+        "canonical_name": "Potential incidence of disease due to PM emissions",
+        "category": "additional_impact",
+        "unit": "disease incidence",
+        "aliases_en": [
+          "PM",
+          "Particulate matter",
+          "Particulate Matter emissions",
+          "Potential incidence of disease due to PM emissions",
+          "Particulate matter emissions"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c602c6-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c602c6-def3-11e6-bf01-fe55135034f3"
+        },
+        "unit_aliases": [
+          "disease incidence",
+          "incidence"
+        ]
+      },
+      "IRP": {
+        "canonical_name": "Potential Human exposure efficiency relative to U235",
+        "category": "additional_impact",
+        "unit": "kBq U235 eq",
+        "aliases_en": [
+          "IRP",
+          "IR",
+          "Ionizing radiation",
+          "Ionising radiation",
+          "Ionizing radiation - human health",
+          "Ionising radiation - human health",
+          "Potential Human exposure efficiency relative to U235"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b5c632be-def3-11e6-bf01-fe55135034f3",
+          "EF3.1": "b5c632be-def3-11e6-bf01-fe55135034f3"
+        }
+      },
+      "ETP-fw": {
+        "canonical_name": "Potential Comparative Toxic Unit for ecosystems",
+        "category": "additional_impact",
+        "unit": "CTUe",
+        "aliases_en": [
+          "ETP-fw",
+          "ETP freshwater",
+          "Ecotoxicity (freshwater)",
+          "Ecotoxicity freshwater",
+          "Eco toxicity - freshwater",
+          "Freshwater ecotoxicity",
+          "Potential Comparative Toxic Unit for ecosystems"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "ee1082d1-b0f7-43ca-a1f0-21e2a4a74511",
+          "EF3.1": "05316e7a-b254-4bea-9cf0-6bf33eb5c630"
+        }
+      },
+      "HTP-c": {
+        "canonical_name": "Potential Comparative Toxic Unit for humans - cancer effects",
+        "category": "additional_impact",
+        "unit": "CTUh",
+        "aliases_en": [
+          "HTP-c",
+          "Human toxicity, cancer",
+          "Human toxicity - cancer",
+          "Human toxicity - cancer effects",
+          "Human toxicity – cancer effects",
+          "Human toxicity carcinogenic",
+          "Potential Comparative Toxic Unit for humans - cancer effects"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "2299222a-bbd8-474f-9d4f-4dd1f18aea7c",
+          "EF3.1": "2299222a-bbd8-474f-9d4f-4dd1f18aea7c"
+        }
+      },
+      "HTP-nc": {
+        "canonical_name": "Potential Comparative Toxic Unit for humans - non-cancer effects",
+        "category": "additional_impact",
+        "unit": "CTUh",
+        "aliases_en": [
+          "HTP-nc",
+          "Human tox. non-cancer",
+          "Human toxicity, non-cancer",
+          "Human toxicity - non-cancer",
+          "Human toxicity - non-cancer effects",
+          "Human toxicity – non cancer effects",
+          "Human toxicity non-carcinogenic",
+          "Potential Comparative Toxic Unit for humans - non-cancer effects"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "3af763a5-b7a1-48c9-9cee-1f223481fcef",
+          "EF3.1": "7cfdcfcf-b222-4b26-888a-a55f9fbf7ac8"
+        }
+      },
+      "SQP": {
+        "canonical_name": "Potential Soil quality index",
+        "category": "additional_impact",
+        "unit": "unitless",
+        "aliases_en": [
+          "SQP",
+          "Soil quality",
+          "Soil Quality (dimensionless)",
+          "Soil quality potential",
+          "Potential Soil quality index",
+          "Land use related impacts/soil quality"
+        ],
+        "uuid_by_method": {
+          "EF3.0": "b2ad6890-c78d-11e6-9d9d-cec0c932ce01",
+          "EF3.1": "b2ad6890-c78d-11e6-9d9d-cec0c932ce01"
+        },
+        "unit_aliases": [
+          "unitless",
+          "dimensionless",
+          "-",
+          "1"
+        ]
+      },
+      "GWP-GHG": {
+        "canonical_name": "Global Warming Potential - greenhouse gases excluding biogenic CO2 uptake/emissions and stored biogenic carbon",
+        "category": "additional_climate_indicator",
+        "unit": "kg CO2 eq",
+        "aliases_en": [
+          "GWP-GHG",
+          "GWP GHG",
+          "GWP-GHG (IPCC AR5)",
+          "Global warming potential - greenhouse gases",
+          "Climate impact indicator GWP-GHG"
+        ],
+        "uuid_by_method": {},
+        "notes": "Keep as a separate indicator. Do not silently replace GWP-total."
+      }
+    }
+  },
+  "shared_resource_waste_output_indicators": {
+    "PERE": {
+      "canonical_name": "Use of renewable primary energy excluding renewable primary energy resources used as raw materials",
+      "short_name": "Use of renewable primary energy as energy carrier",
+      "category": "resource_use",
+      "unit": "MJ",
+      "uuid": "20f32be5-0398-4288-9b6d-accddd195317",
+      "aliases_en": [
+        "PERE",
+        "Use of renewable primary energy (PERE)",
+        "Use of renewable primary energy as energy carrier",
+        "Use of renewable primary energy excluding renewable primary energy resources used as raw materials",
+        "Renewable primary energy excluding raw materials",
+        "Renewable primary energy as energy carrier",
+        "Renew. PER as energy",
+        "Renew PER as energy"
+      ]
+    },
+    "PERM": {
+      "canonical_name": "Use of renewable primary energy resources used as raw materials",
+      "category": "resource_use",
+      "unit": "MJ",
+      "uuid": "fb3ec0de-548d-4508-aea5-00b73bf6f702",
+      "aliases_en": [
+        "PERM",
+        "Use of renewable primary energy resources used as raw materials (PERM)",
+        "Use of renewable primary energy resources used as raw materials",
+        "Renewable primary energy used as raw materials",
+        "Renewable primary energy as material",
+        "Renew. PER as material",
+        "Renew PER as material"
+      ]
+    },
+    "PERT": {
+      "canonical_name": "Total use of renewable primary energy resources",
+      "category": "resource_use",
+      "unit": "MJ",
+      "uuid": "53f97275-fa8a-4cdd-9024-65936002acd0",
+      "aliases_en": [
+        "PERT",
+        "Total use of renewable primary energy resources (PERT)",
+        "Total use of renewable primary energy resources",
+        "Total renewable primary energy",
+        "Total use of renew. PER",
+        "Total use of renew PER"
+      ]
+    },
+    "PENRE": {
+      "canonical_name": "Use of non-renewable primary energy excluding non-renewable primary energy resources used as raw materials",
+      "short_name": "Use of non renewable primary energy as energy carrier",
+      "category": "resource_use",
+      "unit": "MJ",
+      "uuid": "ac857178-2b45-46ec-892a-a9a4332f0372",
+      "aliases_en": [
+        "PENRE",
+        "Use of non renewable primary energy (PENRE)",
+        "Use of non-renewable primary energy (PENRE)",
+        "Use of non renewable primary energy as energy carrier",
+        "Use of non-renewable primary energy as energy carrier",
+        "Use of non-renewable primary energy excluding non-renewable primary energy resources used as raw materials",
+        "Non-renewable primary energy excluding raw materials",
+        "Non-renewable primary energy as energy carrier",
+        "Non-re. PER as energy",
+        "Non-ren PER as energy"
+      ]
+    },
+    "PENRM": {
+      "canonical_name": "Use of non-renewable primary energy resources used as raw materials",
+      "category": "resource_use",
+      "unit": "MJ",
+      "uuid": "1421caa0-679d-4bf4-b282-0eb850ccae27",
+      "aliases_en": [
+        "PENRM",
+        "Use of non renewable primary energy resources used as raw materials (PENRM)",
+        "Use of non-renewable primary energy resources used as raw materials",
+        "Non-renewable primary energy used as raw materials",
+        "Non-renewable primary energy as material",
+        "Non-re. PER as material",
+        "Non-ren PER as material"
+      ]
+    },
+    "PENRT": {
+      "canonical_name": "Total use of non-renewable primary energy resources",
+      "category": "resource_use",
+      "unit": "MJ",
+      "uuid": "06159210-646b-4c8d-8583-da9b3b95a6c1",
+      "aliases_en": [
+        "PENRT",
+        "Total use of non renewable primary energy resource (PENRT)",
+        "Total use of non-renewable primary energy resources",
+        "Total non-renewable primary energy",
+        "Total use of non-re. PER",
+        "Total use of non-ren PER"
+      ]
+    },
+    "SM": {
+      "canonical_name": "Use of secondary material",
+      "category": "resource_use",
+      "unit": "kg",
+      "uuid": "c6a1f35f-2d09-4f54-8dfb-97e502e1ce92",
+      "aliases_en": [
+        "SM",
+        "Use of secondary material (SM)",
+        "Use of secondary material",
+        "Secondary material",
+        "Secondary materials"
+      ]
+    },
+    "RSF": {
+      "canonical_name": "Use of renewable secondary fuels",
+      "category": "resource_use",
+      "unit": "MJ",
+      "uuid": "64333088-a55f-4aa2-9a31-c10b07816787",
+      "aliases_en": [
+        "RSF",
+        "Use of renewable secondary fuels (RSF)",
+        "Use of renewable secondary fuels",
+        "Renewable secondary fuels",
+        "Renew. secondary fuels",
+        "Renew secondary fuels"
+      ]
+    },
+    "NRSF": {
+      "canonical_name": "Use of non-renewable secondary fuels",
+      "category": "resource_use",
+      "unit": "MJ",
+      "uuid": "89def144-d39a-4287-b86f-efde453ddcb2",
+      "aliases_en": [
+        "NRSF",
+        "Use of non renewable secondary fuels (NRSF)",
+        "Use of non-renewable secondary fuels",
+        "Non-renewable secondary fuels",
+        "Non-ren. secondary fuels",
+        "Non-ren secondary fuels"
+      ]
+    },
+    "FW": {
+      "canonical_name": "Use of net fresh water",
+      "category": "resource_use",
+      "unit": "m3",
+      "uuid": "3cf952c8-f3a4-461d-8c96-96456ca62246",
+      "aliases_en": [
+        "FW",
+        "Use of net fresh water (FW)",
+        "Use of net fresh water",
+        "Net use of fresh water",
+        "Net fresh water use",
+        "Net freshwater use",
+        "Fresh water use"
+      ],
+      "disambiguation": "Do not confuse with WDP. FW is a resource-use flow in m3; WDP is an impact indicator."
+    },
+    "HWD": {
+      "canonical_name": "Hazardous waste disposed",
+      "category": "waste",
+      "unit": "kg",
+      "uuid": "430f9e0f-59b2-46a0-8e0d-55e0e84948fc",
+      "aliases_en": [
+        "HWD",
+        "Hazardous waste disposed (HWD)",
+        "Hazardous waste disposed",
+        "Hazardous waste"
+      ]
+    },
+    "NHWD": {
+      "canonical_name": "Non-hazardous waste disposed",
+      "category": "waste",
+      "unit": "kg",
+      "uuid": "b29ef66b-e286-4afa-949f-62f1a7b4d7fa",
+      "aliases_en": [
+        "NHWD",
+        "Non hazardous waste dispose (NHWD)",
+        "Non-hazardous waste disposed",
+        "Non hazardous waste disposed",
+        "Non-hazardous waste",
+        "Non hazardous waste"
+      ]
+    },
+    "RWD": {
+      "canonical_name": "Radioactive waste disposed",
+      "category": "waste",
+      "unit": "kg",
+      "uuid": "3449546e-52ad-4b39-b809-9fb77cea8ff6",
+      "aliases_en": [
+        "RWD",
+        "Radioactive waste disposed (RWD)",
+        "Radioactive waste disposed",
+        "Radioactive waste"
+      ]
+    },
+    "CRU": {
+      "canonical_name": "Components for re-use",
+      "category": "output_flow",
+      "unit": "kg",
+      "uuid": "a2b32f97-3fc7-4af2-b209-525bc6426f33",
+      "aliases_en": [
+        "CRU",
+        "Components for re-use (CRU)",
+        "Components for re-use",
+        "Components for reuse",
+        "Component for reuse"
+      ]
+    },
+    "MFR": {
+      "canonical_name": "Materials for recycling",
+      "category": "output_flow",
+      "unit": "kg",
+      "uuid": "d7fe48a5-4103-49c8-9aae-b0b5dfdbd6ae",
+      "aliases_en": [
+        "MFR",
+        "Materials for recycling (MFR)",
+        "Materials for recycling",
+        "Material for recycling"
+      ]
+    },
+    "MER": {
+      "canonical_name": "Materials for energy recovery",
+      "category": "output_flow",
+      "unit": "kg",
+      "uuid": "59a9181c-3aaf-46ee-8b13-2b3723b6e447",
+      "aliases_en": [
+        "MER",
+        "Materials for energy recovery (MER)",
+        "Materials for energy recovery",
+        "Material for energy recovery",
+        "Materials for energy rec"
+      ]
+    },
+    "EEE": {
+      "canonical_name": "Exported electrical energy",
+      "category": "output_flow",
+      "unit": "MJ",
+      "uuid": "4da0c987-2b76-40d6-9e9e-82a017aaaf29",
+      "aliases_en": [
+        "EEE",
+        "Exported electrical energy (EEE)",
+        "Exported electrical energy",
+        "Exported electricity",
+        "Exported energy - electricity",
+        "Exported energy – electricity",
+        "Exported energy, electricity"
+      ]
+    },
+    "EET": {
+      "canonical_name": "Exported thermal energy",
+      "category": "output_flow",
+      "unit": "MJ",
+      "uuid": "98daf38a-7a79-46d3-9a37-2b7bd0955810",
+      "aliases_en": [
+        "EET",
+        "Exported thermal energy (EET)",
+        "Exported thermal energy",
+        "Exported heat",
+        "Exported energy - heat",
+        "Exported energy – heat",
+        "Exported energy, thermal"
+      ]
+    },
+    "EE_TOTAL": {
+      "canonical_name": "Exported energy - total/unspecified",
+      "category": "output_flow_nonstandard_aggregate",
+      "unit": "MJ",
+      "uuid": null,
+      "aliases_en": [
+        "EE",
+        "Exported energy",
+        "Total exported energy"
+      ],
+      "notes": "Keep separately when the EPD gives only total exported energy. Do not invent an electrical/thermal split."
+    }
+  },
+  "scenario_fields": {
+    "A4": {
+      "section_aliases": [
+        "Transport to the building site (A4)",
+        "Transport scenario documentation A4",
+        "Transports to building sites (A4)",
+        "A4 transport"
+      ],
+      "fields": {
+        "transport_distance_km": [
+          "Average transport distance, km",
+          "Transport distance",
+          "Distance to building site",
+          "Distance",
+          "Distance (km)"
+        ],
+        "transport_mode": [
+          "Transport mode",
+          "Mode of transport",
+          "Transport type",
+          "Truck",
+          "Rail",
+          "Ship",
+          "Sea freight"
+        ],
+        "vehicle_type": [
+          "Vehicle type",
+          "Type of vehicle",
+          "Lorry type",
+          "Truck type",
+          "Fuel type, consumption, and vehicle type"
+        ],
+        "gross_vehicle_weight_t": [
+          "Gross weight, tonnes",
+          "Gross vehicle weight",
+          "Gross weight"
+        ],
+        "payload_t": [
+          "Payload capacity (tonnes)",
+          "Payload capacity",
+          "Payload"
+        ],
+        "capacity_utilisation_percent": [
+          "Capacity utilization",
+          "Capacity utilisation",
+          "Capacity use",
+          "Cap. use (%)",
+          "Load factor"
+        ],
+        "empty_return": [
+          "Empty return",
+          "Including empty return"
+        ],
+        "fuel_type": [
+          "Fuel type",
+          "Diesel",
+          "HVO",
+          "Electric truck"
+        ],
+        "fuel_consumption": [
+          "Fuel consumption",
+          "Fuel consumpion",
+          "l/tkm",
+          "l/100 km"
+        ],
+        "bulk_density_transport": [
+          "Bulk density of transported products",
+          "Transported product bulk density"
+        ],
+        "volume_capacity_utilisation_factor": [
+          "Volume capacity utilization factor",
+          "Volume capacity utilisation factor"
+        ]
+      }
+    },
+    "A5": {
+      "section_aliases": [
+        "Installation of the product in the building (A5)",
+        "Installation scenario documentation A5",
+        "Construction/installation",
+        "A5 installation"
+      ],
+      "fields": {
+        "installation_waste_percent": [
+          "Installation waste",
+          "Wastage rate",
+          "Waste rate",
+          "Material loss",
+          "Loss rate"
+        ],
+        "installation_energy": [
+          "Installation energy",
+          "Site energy",
+          "Construction energy",
+          "Electricity for installation",
+          "Diesel burned in building machine"
+        ],
+        "installation_water": [
+          "Installation water",
+          "Water use during installation",
+          "Water for installation"
+        ],
+        "packaging_output": [
+          "Output materials, packaging",
+          "Packaging waste",
+          "Packaging material",
+          "Total packaging material"
+        ],
+        "waste_treatment": [
+          "Treatment of waste",
+          "Waste treatment",
+          "Treatment of packaging waste"
+        ],
+        "exported_energy_electricity": [
+          "Exported Energy: Electricity",
+          "Exported energy - Electricity"
+        ],
+        "exported_energy_thermal": [
+          "Exported Energy: Thermal",
+          "Exported energy - Heat",
+          "Exported energy - Thermal"
+        ],
+        "site_process_description": [
+          "Installation process",
+          "Construction process",
+          "Site process",
+          "Scenario information"
+        ]
+      }
+    },
+    "B": {
+      "section_aliases": [
+        "Use (B1-B7)",
+        "Use stage",
+        "Use stage scenarios"
+      ],
+      "fields": {
+        "maintenance_frequency": [
+          "Maintenance frequency",
+          "Maintenance interval"
+        ],
+        "repair_frequency": [
+          "Repair frequency",
+          "Repair interval"
+        ],
+        "replacement_cycle_years": [
+          "Replacement cycle",
+          "Replacement interval",
+          "Replacement frequency"
+        ],
+        "operational_energy": [
+          "Operational energy",
+          "Energy use"
+        ],
+        "operational_water": [
+          "Operational water",
+          "Water use"
+        ]
+      }
+    },
+    "C1": {
+      "section_aliases": [
+        "C1. Demolition",
+        "C1 Deconstruction",
+        "Deconstruction/demolition"
+      ],
+      "fields": {
+        "demolition_energy": [
+          "Demolition energy",
+          "Deconstruction energy",
+          "Diesel use",
+          "Diesel consumption"
+        ],
+        "demolition_process": [
+          "Demolition process",
+          "Deconstruction process",
+          "Recovery from demolished construction"
+        ]
+      }
+    },
+    "C2": {
+      "section_aliases": [
+        "C2. Transport",
+        "C2 Transport to scrap yards or recycling facilities",
+        "End-of-life transport"
+      ],
+      "fields": {
+        "transport_distance_km": [
+          "Waste transport distance",
+          "End-of-life transport distance",
+          "Distance to treatment",
+          "Distance to disposal"
+        ],
+        "transport_mode": [
+          "Waste transport mode",
+          "Mode of transport",
+          "Vehicle type"
+        ]
+      }
+    },
+    "C3": {
+      "section_aliases": [
+        "C3 Waste processing",
+        "C3. Waste processing",
+        "Waste processing"
+      ],
+      "fields": {
+        "waste_processing": [
+          "Waste processing",
+          "Waste treatment",
+          "Sorting",
+          "Recycling process",
+          "Shredding"
+        ],
+        "recycling_rate": [
+          "Recycling rate",
+          "For recycling",
+          "Recycled fraction"
+        ],
+        "energy_recovery_rate": [
+          "Energy recovery rate",
+          "For energy recovery",
+          "Recovery fraction"
+        ]
+      }
+    },
+    "C4": {
+      "section_aliases": [
+        "C4 Disposal",
+        "C4. Disposal",
+        "Final disposal"
+      ],
+      "fields": {
+        "disposal_scenario": [
+          "Disposal scenario",
+          "Final disposal",
+          "Landfill scenario"
+        ],
+        "landfill_rate": [
+          "Landfill rate",
+          "For final disposal",
+          "Landfilled fraction"
+        ],
+        "incineration_rate": [
+          "Incineration rate",
+          "Incinerated fraction"
+        ]
+      }
+    },
+    "D": {
+      "section_aliases": [
+        "Re-use, recovery and recycling potential (D)",
+        "Module D",
+        "Resource recovery stage",
+        "Recycling potential"
+      ],
+      "fields": {
+        "reuse_benefit": [
+          "Reuse benefit",
+          "Re-use benefit",
+          "Benefits beyond system boundary"
+        ],
+        "recycling_credit": [
+          "Recycling credit",
+          "Recycling benefit",
+          "Substitution of raw material"
+        ],
+        "energy_recovery_credit": [
+          "Energy recovery credit",
+          "Exported energy benefit"
+        ],
+        "substitution_assumption": [
+          "Substitution assumption",
+          "Substitution ratio",
+          "Avoided product",
+          "Substitution of raw material"
+        ]
+      }
+    },
+    "EOL_common": {
+      "section_aliases": [
+        "End of life (C1-C4)",
+        "End-of-life scenario documentation",
+        "End of life scenario documentation"
+      ],
+      "fields": {
+        "collected_separately": [
+          "Collected separately"
+        ],
+        "collected_mixed_waste": [
+          "Collected with mixed waste"
+        ],
+        "for_reuse": [
+          "For reuse",
+          "For re-use"
+        ],
+        "for_recycling": [
+          "For recycling"
+        ],
+        "for_energy_recovery": [
+          "For energy recovery"
+        ],
+        "for_final_disposal": [
+          "For final disposal"
+        ],
+        "scenario_assumptions": [
+          "Scenario assumptions",
+          "Assumptions for scenario development"
+        ]
+      }
+    }
+  },
+  "ilcd_xml_mapping": {
+    "dataset_uuid": [
+      "processDataSet/processInformation/dataSetInformation/UUID",
+      "publicationAndOwnership/UUID (implementation may vary by version)"
+    ],
+    "dataset_version": [
+      "administrativeInformation/publicationAndOwnership/dataSetVersion"
+    ],
+    "reference_year": [
+      "processInformation/time/referenceYear"
+    ],
+    "declared_unit": [
+      "quantitativeReference/referenceToReferenceFlow -> referenced product flow",
+      "reference product flow property + exchange amount"
+    ],
+    "indicator_identity": [
+      "LCIAResult/referenceToLCIAMethodDataSet/@refObjectId",
+      "LCIAResult/referenceToLCIAMethodDataSet/common:shortDescription"
+    ],
+    "indicator_unit": [
+      "LCIAResult/common:other/epd:referenceToUnitGroupDataSet/common:shortDescription"
+    ],
+    "module_value": [
+      "LCIAResult/common:other/epd:amount/@epd:module + text()"
+    ],
+    "scenario": [
+      "LCIAResult/common:other/epd:amount/@epd:scenario"
+    ],
+    "inventory_flow_module_value": [
+      "exchange/common:other/epd:amount/@epd:module + text()"
+    ],
+    "policy": "For XML, the module attribute is authoritative. Do not reconstruct module names from prose."
+  },
+  "source_specific_patterns": {
+    "EPD_Danmark": {
+      "observed_patterns": [
+        "Parameter | Unit | A1-A3 | C1 | C2 | C3 | C4 | D",
+        "Indicator | Unit | A1 | A2 | A3 | Tot.A1-A3 | ...",
+        "MND = module not declared",
+        "ADPm and ADPf abbreviations",
+        "WDP sometimes displayed with line-broken 'm3 world eq. deprived'",
+        "RESOURCE USE PER",
+        "WASTE CATEGORIES AND OUTPUT FLOWS PER",
+        "Biogenic carbon content in product / accompanying packaging"
+      ]
+    },
+    "OeKOBAUDAT": {
+      "observed_patterns": [
+        "ILCD+EPD process/reference-flow structure",
+        "Production A1-A3",
+        "Use B1",
+        "Recycling Potential D",
+        "Use of renewable primary energy as energy carrier (PERE)",
+        "Compliance system name distinguishes EN15804+A1 from EN15804+A2"
+      ]
+    },
+    "ECO_Platform_ECO_Portal": {
+      "observed_patterns": [
+        "Machine-readable ILCD+EPD",
+        "UUID + dataset version",
+        "Reference flow defines declared unit",
+        "Mass required even when declared unit is not mass",
+        "Material properties: grammage, layer thickness, gross density, linear density, conversion factor to 1 kg",
+        "epd:amount module attribute in XML",
+        "scenario attribute may be attached to module result"
+      ]
+    },
+    "LCAbyg": {
+      "observed_patterns": [
+        "Supports ILCD+EPD import",
+        "EPD Danmark .lb5epd import",
+        "Historical generic database updated from ÖKOBAUDAT",
+        "Parser should preserve original EPD data and allow cross-check against PDF"
+      ]
+    },
+    "One_Click_LCA_and_generated_EPDs": {
+      "observed_patterns": [
+        "A1, A2, A3 and A1-A3 may all appear in the same table",
+        "GWP – total / fossil / biogenic / LULUC",
+        "Ozone depletion pot.",
+        "POCP ('smog')",
+        "ADP-minerals & metals",
+        "ADP-fossil resources",
+        "Renew. PER as energy / material",
+        "Non-re. PER as energy / material",
+        "END OF LIFE - WASTE",
+        "END OF LIFE - OUTPUT FLOWS",
+        "Global Warming Pot. in EN15804+A1/CML tables"
+      ]
+    }
+  },
+  "qa_rules": {
+    "a1_a3_sum_check": {
+      "enabled": true,
+      "formula": "reported_A1 + reported_A2 + reported_A3",
+      "compare_to": "reported_A1-A3",
+      "relative_tolerance": 0.01,
+      "absolute_tolerance": 1e-12,
+      "status_if_outside_tolerance": "warning_rounding_or_source_inconsistency"
+    },
+    "unit_profile_checks": [
+      {
+        "profile": "EN15804_A1_CML",
+        "indicator": "AP",
+        "expected_unit": "kg SO2 eq"
+      },
+      {
+        "profile": "EN15804_A2",
+        "indicator": "AP",
+        "expected_unit": "mol H+ eq"
+      },
+      {
+        "profile": "EN15804_A1_CML",
+        "indicator": "POCP",
+        "expected_unit": "kg ethene eq"
+      },
+      {
+        "profile": "EN15804_A2",
+        "indicator": "POCP",
+        "expected_unit": "kg NMVOC eq"
+      }
+    ],
+    "mandatory_review_flags": [
+      "standard_profile unresolved",
+      "same normalized indicator appears twice with same module and incompatible units",
+      "A1-A3 aggregate present together with partial split values only",
+      "declared unit missing",
+      "product name missing",
+      "numeric table parsed without module headers",
+      "D value silently combined with A-C totals",
+      "WDP/FW ambiguous",
+      "fuzzy indicator match below confidence threshold"
+    ],
+    "module_d_policy": "Always store module D separately. Do not subtract D from A-C unless a downstream calculation explicitly requests that operation.",
+    "source_traceability": "Every parsed value should retain source_page, source_table/section, raw_indicator_label, raw_unit, raw_module_header and extraction_method."
+  },
+  "normalized_output_schema": {
+    "document": {
+      "source_file": "string",
+      "source_database_or_programme": "string|null",
+      "language": "en",
+      "standard_profile": "EN15804_A1_CML|EN15804_A2_EF3.0|EN15804_A2_EF3.1|EN15804_A2_UNKNOWN_EF|unresolved",
+      "extraction_method": "pdf_text|pdf_table|ocr|ilcd_xml"
+    },
+    "metadata": "{canonical metadata fields}",
+    "physical_properties": "{canonical material properties}",
+    "results": {
+      "<canonical_indicator>": {
+        "method_profile": "string",
+        "canonical_unit": "string",
+        "modules": {
+          "<module_or_aggregate>": {
+            "value": "number|null",
+            "status": "declared|not_declared|not_relevant|not_applicable|not_available",
+            "provenance": "reported|calculated",
+            "raw_value": "string|null",
+            "raw_unit": "string|null",
+            "raw_indicator_label": "string|null",
+            "raw_module_header": "string|null",
+            "source_page": "integer|null",
+            "confidence": "0..1"
+          }
+        }
+      }
+    },
+    "a1_a3_reporting_mode": "aggregate_only|split_only|split_plus_reported_total|partial_split|none",
+    "scenarios": "{A4/A5/B/C1/C2/C3/C4/D/EOL_common}",
+    "qa": {
+      "warnings": "list[string]",
+      "a1_a3_sum_checks": "list[object]",
+      "manual_review_required": "boolean"
+    }
+  },
+  "updated_for": "Upload → Extract → Human Review → Store prototype",
+  "reference_basis": {
+    "ILCD_Handbook_General_Guide": "Conceptual LCA meaning and methodological basis (ISO 14040/14044 aligned).",
+    "ILCD_Documentation_of_LCA_Data_Sets_1_1_Beta": "Relationships among process, flow, flow-property, unit-group, source, contact and LCIA-method datasets.",
+    "ILCD_Format_1_1_Process_Data_Set": "Identification, quantitative reference, time, geography, technology, modelling/validation, administrative information, exchanges and LCIA results.",
+    "ILCD_Common_Data_Types": "UUID/object references, versions, URI, short descriptions, multilingual strings and dates.",
+    "ILCD_Unit_Group_Data_Set": "Canonical unit groups and unit references.",
+    "ILCD_Flow_and_Flow_Property_Data_Sets": "Reference product flow, product/waste/elementary flows and physical flow properties.",
+    "ILCD_plus_EPD": "Construction-EPD extension for EN 15804 module-wise values, scenarios and digital EPD master data.",
+    "ILCD_plus_EPD_Master_Data": "Canonical LCIA indicator and resource/waste/output-flow UUIDs for EN 15804 profiles.",
+    "ILCD_LCIA_Recommendations": "Conceptual meaning of environmental impact indicators."
+  },
+  "thesis_required_fields": {
+    "header_identification": [
+      {
+        "key": "registration_number",
+        "label": "EPD ID",
+        "type": "string",
+        "source_family": [
+          "ILCD Process dataset",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "programme_operator",
+        "label": "EPD program operator",
+        "type": "string",
+        "source_family": [
+          "ILCD administrative information",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "gpi",
+        "label": "Programme Instructions (GPI)",
+        "type": "string",
+        "source_family": [
+          "ILCD+EPD/programme metadata"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "publication_date",
+        "label": "EPD publication date",
+        "type": "date",
+        "source_family": [
+          "ILCD administrative information"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "valid_until",
+        "label": "EPD valid until",
+        "type": "date",
+        "source_family": [
+          "ILCD time/admin metadata",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "epd_type",
+        "label": "EPD Type",
+        "type": "string",
+        "source_family": [
+          "ILCD modelling scope",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "geography",
+        "label": "Geographical Scope",
+        "type": "string",
+        "source_family": [
+          "ILCD geography"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "language",
+        "label": "Language",
+        "type": "string",
+        "source_family": [
+          "ILCD common datatypes"
+        ],
+        "extract_phase": 1
+      }
+    ],
+    "verification_compliance": [
+      {
+        "key": "pcr",
+        "label": "PCR",
+        "type": "string",
+        "source_family": [
+          "ILCD modelling and validation",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "pcr_review_panel",
+        "label": "PCR review panel",
+        "type": "string",
+        "source_family": [
+          "ILCD+EPD/source-contact references"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "verifier",
+        "label": "Independent verifier",
+        "type": "string",
+        "source_family": [
+          "ILCD modelling and validation",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "verification_type",
+        "label": "Verification type",
+        "type": "string",
+        "source_family": [
+          "ILCD modelling and validation",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "compliance_statement",
+        "label": "Compliance statement",
+        "type": "string",
+        "source_family": [
+          "ILCD compliance/modelling and validation"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "comparability_statement",
+        "label": "Comparability statement",
+        "type": "string",
+        "source_family": [
+          "ILCD+EPD narrative/source metadata"
+        ],
+        "extract_phase": 2
+      }
+    ],
+    "product_company": [
+      {
+        "key": "product_name",
+        "label": "Product name",
+        "type": "string",
+        "source_family": [
+          "ILCD reference product flow",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "product_category",
+        "label": "Product category",
+        "type": "string",
+        "source_family": [
+          "ILCD classification"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "manufacturer",
+        "label": "Manufacturer",
+        "type": "string",
+        "source_family": [
+          "ILCD contact/owner references",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "production_site",
+        "label": "Manufacturing site(s)",
+        "type": "string",
+        "source_family": [
+          "ILCD geography/technology",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "product_description",
+        "label": "Product description",
+        "type": "string",
+        "source_family": [
+          "ILCD technology description",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "product_composition",
+        "label": "Product composition",
+        "type": "array",
+        "source_family": [
+          "ILCD exchanges/technology narrative",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "technical_specifications",
+        "label": "Technical specifications",
+        "type": "object",
+        "source_family": [
+          "ILCD flow properties",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "packaging_materials",
+        "label": "Packaging materials",
+        "type": "array",
+        "source_family": [
+          "ILCD exchanges",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "manufacturing_process",
+        "label": "Manufacturing process",
+        "type": "string",
+        "source_family": [
+          "ILCD technology"
+        ],
+        "extract_phase": 2
+      }
+    ],
+    "lca_methodology": [
+      {
+        "key": "declared_unit_raw",
+        "label": "Declared unit",
+        "type": "string",
+        "source_family": [
+          "ILCD quantitative reference + reference flow",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "reference_service_life_years",
+        "label": "Reference Service Life (RSL)",
+        "type": "number",
+        "source_family": [
+          "ILCD+EPD product property/scenario"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "conversion_factor_to_1kg",
+        "label": "Conversion factor",
+        "type": "number",
+        "source_family": [
+          "ILCD flow properties/unit groups",
+          "ILCD+EPD"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "system_boundary",
+        "label": "System boundaries",
+        "type": "string",
+        "source_family": [
+          "ILCD modelling scope",
+          "ILCD+EPD modules"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "cutoff_rules",
+        "label": "Cut-off criteria",
+        "type": "string",
+        "source_family": [
+          "ILCD modelling and validation"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "allocation",
+        "label": "Allocation rules",
+        "type": "string",
+        "source_family": [
+          "ILCD modelling and validation"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "data_quality",
+        "label": "Data quality & time coverage",
+        "type": "string",
+        "source_family": [
+          "ILCD data quality/time"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "lca_software",
+        "label": "Software & database",
+        "type": "string",
+        "source_family": [
+          "ILCD administrative/modelling metadata"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "background_database",
+        "label": "Background database",
+        "type": "string",
+        "source_family": [
+          "ILCD source references"
+        ],
+        "extract_phase": 2
+      }
+    ],
+    "data_extraction_standardization": [
+      {
+        "key": "raw_value",
+        "label": "Original value",
+        "type": "string",
+        "source_family": [
+          "parser provenance"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "raw_unit",
+        "label": "Original unit",
+        "type": "string",
+        "source_family": [
+          "ILCD unit group / parser provenance"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "standardized_value",
+        "label": "Standardized value",
+        "type": "number_or_string",
+        "source_family": [
+          "normalization layer"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "canonical_unit",
+        "label": "Standardized unit",
+        "type": "string",
+        "source_family": [
+          "ILCD unit groups / ILCD+EPD master data"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "conversion_formula",
+        "label": "Conversion formula applied",
+        "type": "string",
+        "source_family": [
+          "normalization provenance"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "source_page",
+        "label": "Source page/table",
+        "type": "integer_or_string",
+        "source_family": [
+          "parser provenance"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "data_source",
+        "label": "Data source",
+        "type": "string",
+        "source_family": [
+          "ILCD source dataset / file provenance"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "confidence",
+        "label": "Extraction confidence",
+        "type": "number",
+        "source_family": [
+          "prototype QA"
+        ],
+        "extract_phase": 1
+      },
+      {
+        "key": "validation_status",
+        "label": "Validation status",
+        "type": "string",
+        "source_family": [
+          "prototype human review"
+        ],
+        "extract_phase": 1
+      }
+    ],
+    "digital_template": [
+      {
+        "key": "ilcd_mapping",
+        "label": "ILCD+EPD XML mapping",
+        "type": "object",
+        "source_family": [
+          "ILCD+EPD XML"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "digital_signature",
+        "label": "Digital signature",
+        "type": "string",
+        "source_family": [
+          "ILCD administrative/security metadata if available"
+        ],
+        "extract_phase": 2
+      },
+      {
+        "key": "classification",
+        "label": "Product classification code",
+        "type": "array",
+        "source_family": [
+          "ILCD classification"
+        ],
+        "extract_phase": 2
+      }
+    ]
+  },
+  "provenance_policy": {
+    "store_raw_and_normalized": true,
+    "reason": "Preserve source wording/numbers for auditability and human validation.",
+    "per_value_fields": [
+      "raw_value",
+      "raw_unit",
+      "raw_indicator_label",
+      "raw_module_header",
+      "standardized_value",
+      "canonical_unit",
+      "source_page",
+      "source_table_or_section",
+      "extraction_method",
+      "confidence",
+      "validation_status"
+    ]
+  }
+}
