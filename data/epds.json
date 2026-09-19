@@ -1,1 +1,4512 @@
-[]
+[
+  {
+    "schema_version": "1.1",
+    "document": {
+      "source_file": "VELUX polyurethane roof windows GPU, GTU, GXU, GLU, VIU, GIU (double glazing configuration).pdf",
+      "source_database_or_programme": "Institut Bauen und Umwelt e.V. (IBU)",
+      "language": "English",
+      "standard_profile": "EN15804_A2_UNKNOWN_EF",
+      "extraction_method": "pdf_text+pdf_table",
+      "page_count": 9,
+      "pages_without_text": [],
+      "extracted_at": "2026-09-19T02:06:12.507932+00:00",
+      "stored_pdf": "uploads/20260919T020722Z_VELUX_polyurethane_roof_windows_GPU_GTU_GXU_GLU_VIU_GIU_double_glazing_configuration_.pdf"
+    },
+    "metadata": {
+      "registration_number": "EPD-VEL-20250344-CBI1-EN",
+      "programme_operator": "Institut Bauen und Umwelt e.V. (IBU)",
+      "manufacturer": "VELUX Group",
+      "publication_date": "11/07/2025",
+      "valid_until": "10/07/2030",
+      "product_name": "VELUX polyurethane roof windows GPU, GTU, GXU, GLU, VIU, GIU (double glazing configuration)",
+      "standard_profile": "EN15804_A2_UNKNOWN_EF",
+      "standard": "EN 15804+A2",
+      "pcr": "Windows and doors , 01/08/2021",
+      "product_category": "Windows and doors",
+      "verifier": "Dr.-Ing. Nikolay Minkov",
+      "verification_type": "External third-party verification",
+      "epd_type": "cradle to gate - with options",
+      "system_boundary": "cradle to gate - with options",
+      "declared_unit_raw": "1 m2",
+      "reference_service_life_years": null,
+      "reference_service_life_status": "not_defined",
+      "geography": "Europe",
+      "production_site": "Germany, Denmark and Poland",
+      "product_description": "The VELUX polyurethane roof windows are skylight window products for sale in the European market. The product family covers a range of product varieties as specified in the table below. All windows have a polyurethane and wooden frame/sash. Some windows can be opened (venting), while others cannot be opened (fixed). In addition, the windows consist of 3 different hinge-functionalities (pivot-hung, top-hung, side-hung, bottom-hung). The handles and handlebars are made of aluminium, while the hinges are made of steel (galvanised, stainless). Some of the window varieties can be used in conjunction with electric or solar window operators for automatic opening and closing, while other windows are opened and closed manually. The calculations are based on the representative window type named GPU. In the LCA, the GPU was assessed to be a conservative choice for a representative window type. The glass panes are with double glazing (2-layer), and different glass configurations are covered by the EPD. The EPD is based on the following glazing unit configuration: 50/51, 70, 70 Q, 76. Only the window modules are included, and any applied window operators, installation products, accessories, etc., are not part of the EPD. These are available as separate EPDs, that can be used in combination with this EPD. For the placing on the market of the product in the European Union/European Free Trade Association (EU/EFTA) (with the exception of Switzerland) Regulation (EU) No. 305/2011 (CPR) applies. The product needs a declaration of performance taking into consideration EN 14351-1:2006+A2:2016, Windows and doors - Product standard, performance characteristics - Part 1: Windows and external pedestrian doorsets. For the application and use, the respective national provisions apply.",
+      "product_composition": [
+        {
+          "component": "Glazing unit (2-layer)",
+          "value": 41.0,
+          "unit": "%"
+        },
+        {
+          "component": "Wooden frame/sash",
+          "value": 15.0,
+          "unit": "%"
+        },
+        {
+          "component": "Steel components (galvanised and stainless)",
+          "value": 18.0,
+          "unit": "%"
+        },
+        {
+          "component": "Aluminium components",
+          "value": 4.0,
+          "unit": "%"
+        },
+        {
+          "component": "Other components (including packaging)",
+          "value": 5.0,
+          "unit": "%"
+        },
+        {
+          "component": "Packaging",
+          "value": 7.0,
+          "unit": "%"
+        }
+      ],
+      "technical_specifications": {
+        "Reaction to fire": {
+          "value": "D-s2,d2",
+          "unit": "class"
+        },
+        "Air permeability acc. EN 12207": {
+          "value": "4",
+          "unit": "class"
+        },
+        "Resistance to wind load, (for window width >1140 mm or height > 1398 mm no performance is determined)": {
+          "value": "C3",
+          "unit": "class"
+        },
+        "Resistance to snow loads": {
+          "value": "4 mm toughened - 16 mm - 6.8 mm laminated float",
+          "unit": "mm"
+        },
+        "Water tightness acc. EN 12208 unprotected / protected": {
+          "value": "E900",
+          "unit": "class"
+        },
+        "Impact resistance (for window width<550mm or heigh<778mm no performance is determined)": {
+          "value": "3",
+          "unit": "class"
+        },
+        "Acoustic performance": {
+          "value": "35 (-1; -3)",
+          "unit": "-"
+        },
+        "Load-bearing capacity of safety devices": {
+          "value": "passed",
+          "unit": "-"
+        },
+        "Thermal transmittance, 90 degree installation acc. to EN 10077-1/2": {
+          "value": "1.3",
+          "unit": "W/(m2K)"
+        },
+        "Solar factor": {
+          "value": "0.46",
+          "unit": "-"
+        },
+        "Light transmittance": {
+          "value": "0.68",
+          "unit": "-"
+        }
+      },
+      "packaging_materials": [
+        {
+          "material": "Cardboard packaging for waste treatment",
+          "value": 3.1,
+          "unit": "kg"
+        },
+        {
+          "material": "Paper packaging for waste treatment",
+          "value": 0.008,
+          "unit": "kg"
+        },
+        {
+          "material": "Steel packaging for waste treatment (galvanised)",
+          "value": 0.005,
+          "unit": "kg"
+        },
+        {
+          "material": "EPS packaging for waste treatment",
+          "value": 0.29,
+          "unit": "kg"
+        },
+        {
+          "material": "LD PE film packaging for waste treatment",
+          "value": 0.011,
+          "unit": "kg"
+        }
+      ],
+      "manufacturing_process": "The polyurethane components are produced internally in VELUX facilities, located in Poland, Denmark, Slovakia and Germany. The wooden components (sashes, frames) are produced internally in VELUX facilities, located in Hungary, Poland, and Denmark. VELUX receives sawn pine wood (dried) and processes it (sawing, cutting, etc.) into lamellas of different quality. The lamellas are then glued together (lamination) and processed into profiles (cutting them into the correct size, cladding, drilling, etc.). VELUX produces the glazing units in sites located in Hungary, Denmark, France, and Germany. After their production, the glazing units join the window assembly process. Finally, the frames/sashes, glazing unit and the rest of the components (delivered by suppliers) are transported to VELUX assembly sites in Germany, Denmark and Poland where they are assembled into the final window product.",
+      "data_quality": "Data quality and a sensitivity analysis show that the results are robust with regard to data quality and appropriateness. There is low variability of production processes, and product variations have a limited influence on the results.",
+      "comparability_statement": "Basically, a comparison or an evaluation of EPD data is only possible if all the data sets to be compared were created according to EN 15804 and the building context, respectively the product-specific characteristics of performance, are taken into account. Average secondary datasets were retrieved from the Managed LCA Content (v2024.2) and Ecoinvent (v3.10) databases.",
+      "lca_software": "LCA for Experts with",
+      "background_database": "Managed LCA Content v2024.2; Ecoinvent v3.10",
+      "gpi": "IBU General Instructions for the EPD programme, Version 2.0",
+      "language": "English",
+      "pcr_review_panel": null,
+      "compliance_statement": null,
+      "cutoff_rules": null,
+      "allocation": null,
+      "classification": null
+    },
+    "metadata_provenance": {
+      "registration_number": {
+        "source_page": 1,
+        "source_text": "Declaration number | EPD-VEL-20250344-CBI1-EN",
+        "extraction_method": "field_specific_label",
+        "confidence": 0.99
+      },
+      "programme_operator": {
+        "source_page": 1,
+        "source_text": "Publisher | Institut Bauen und Umwelt e.V. (IBU)",
+        "extraction_method": "field_specific_label",
+        "confidence": 0.97
+      },
+      "manufacturer": {
+        "source_page": 1,
+        "source_text": "Owner of the Declaration VELUX Group",
+        "extraction_method": "field_specific_label",
+        "confidence": 0.97
+      },
+      "publication_date": {
+        "source_page": 1,
+        "source_text": "Issue date | 11/07/2025",
+        "extraction_method": "field_specific_label",
+        "confidence": 0.99
+      },
+      "valid_until": {
+        "source_page": 1,
+        "source_text": "Valid to | 10/07/2030",
+        "extraction_method": "field_specific_label",
+        "confidence": 0.99
+      },
+      "product_name": {
+        "source_page": 1,
+        "source_text": "VELUX polyurethane roof windows GPU, GTU, GXU, GLU, VIU, GIU | (double glazing configuration)",
+        "extraction_method": "cover_title",
+        "confidence": 0.95
+      },
+      "standard": {
+        "source_page": null,
+        "source_text": "EN 15804+A2",
+        "extraction_method": "standard_profile_detection",
+        "confidence": 0.98
+      },
+      "pcr": {
+        "source_page": 2,
+        "source_text": "This declaration is based on the product category rules:\nWindows and doors , 01/08/2021 ",
+        "extraction_method": "field_specific_regex",
+        "confidence": 0.96
+      },
+      "product_category": {
+        "source_page": 2,
+        "source_text": "Windows and doors , 01/08/2021",
+        "extraction_method": "pcr_category",
+        "confidence": 0.9
+      },
+      "verifier": {
+        "source_page": 2,
+        "source_text": "Dr.-Ing. Nikolay Minkov | (Independent verifier)",
+        "extraction_method": "field_specific_context",
+        "confidence": 0.98
+      },
+      "verification_type": {
+        "source_page": 2,
+        "source_text": "External third-party verification",
+        "extraction_method": "verification_checkbox_text",
+        "confidence": 0.9
+      },
+      "epd_type": {
+        "source_page": 4,
+        "source_text": "type of the EPD is \"cradle to gate - with options\"",
+        "extraction_method": "field_specific_regex",
+        "confidence": 0.97
+      },
+      "system_boundary": {
+        "source_page": 4,
+        "source_text": "type of the EPD is \"cradle to gate - with options\"",
+        "extraction_method": "field_specific_regex",
+        "confidence": 0.97
+      },
+      "declared_unit_raw": {
+        "source_page": 4,
+        "source_text": "Declared unit | 1 | m2",
+        "extraction_method": "declared_unit_table_or_regex",
+        "confidence": 0.99
+      },
+      "reference_service_life_years": {
+        "source_page": 4,
+        "source_text": "No reference service life (RSL) is defined for the roof windows because the use stage modules are not included in the EPD.",
+        "extraction_method": "explicit_no_rsl_statement",
+        "confidence": 0.99
+      },
+      "geography": {
+        "source_page": 4,
+        "source_text": "Geographic Representativeness\nLand or region, in which the declared product system is\nmanufactured, used or handled at the end of the product´s\nlifespan: Europe",
+        "extraction_method": "field_specific_regex",
+        "confidence": 0.92
+      },
+      "production_site": {
+        "source_page": 2,
+        "source_text": "production take place in\nGermany, Denmark and Poland",
+        "extraction_method": "field_specific_regex",
+        "confidence": 0.92
+      },
+      "product_description": {
+        "source_page": 3,
+        "source_text": "The VELUX polyurethane roof windows are skylight window products for sale in the European market. The product family covers a range of product varieties as specified in the table below. All windows have a polyurethane and wooden frame/sash. Some windows can be opened (venting), while others cannot be opened (fixed). In addition, the windows consist of 3 different hinge-functionalities (pivot-hung, top-hung, side-hung, bottom-hung). The handles and handlebars are made of aluminium, while the hing",
+        "extraction_method": "section_text",
+        "confidence": 0.88
+      },
+      "product_composition": {
+        "source_page": 4,
+        "source_text": "6 composition rows",
+        "extraction_method": "structured_table",
+        "confidence": 0.98
+      },
+      "technical_specifications": {
+        "source_page": 3,
+        "source_text": "11 technical-property rows",
+        "extraction_method": "structured_table",
+        "confidence": 0.98
+      },
+      "packaging_materials": {
+        "source_page": 5,
+        "source_text": "5 packaging scenario rows",
+        "extraction_method": "structured_table",
+        "confidence": 0.95
+      },
+      "manufacturing_process": {
+        "source_page": 4,
+        "source_text": "The polyurethane components are produced internally in VELUX facilities, located in Poland, Denmark, Slovakia and Germany. The wooden components (sashes, frames) are produced internally in VELUX facilities, located in Hungary, Poland, and Denmark. VELUX receives sawn pine wood (dried) and processes it (sawing, cutting, etc.) into lamellas of different quality. The lamellas are then glued together (lamination) and processed into profiles (cutting them into the correct size, cladding, drilling, et",
+        "extraction_method": "section_regex",
+        "confidence": 0.9
+      },
+      "data_quality": {
+        "source_page": 4,
+        "source_text": "Data quality and a sensitivity analysis show that the results are robust with regard to data quality and appropriateness. There is low variability of production processes, and product variations have a limited influence on the results.",
+        "extraction_method": "section_regex",
+        "confidence": 0.9
+      },
+      "comparability_statement": {
+        "source_page": 4,
+        "source_text": "Basically, a comparison or an evaluation of EPD data is only possible if all the data sets to be compared were created according to EN 15804 and the building context, respectively the product-specific characteristics of performance, are taken into account. Average secondary datasets were retrieved from the Managed LCA Content (v2024.2) and Ecoinvent (v3.10) databases.",
+        "extraction_method": "section_text",
+        "confidence": 0.9
+      },
+      "lca_software": {
+        "source_page": 8,
+        "source_text": "The LCA modelling software is LCA for Experts with",
+        "extraction_method": "field_specific_regex",
+        "confidence": 0.94
+      },
+      "background_database": {
+        "source_page": 4,
+        "source_text": "Managed LCA Content (v2024.2) and Ecoinvent (v3.10)",
+        "extraction_method": "field_specific_regex",
+        "confidence": 0.97
+      },
+      "gpi": {
+        "source_page": 7,
+        "source_text": "General Instructions for the EPD programme of Institut Bauen und Umwelt e.V. Version 2.0",
+        "extraction_method": "reference_section_regex",
+        "confidence": 0.92
+      },
+      "language": {
+        "source_page": 1,
+        "source_text": "EPD ID suffix: -EN",
+        "extraction_method": "registration_suffix_inference",
+        "confidence": 0.75
+      }
+    },
+    "physical_properties": {
+      "conversion_factor_to_1kg": null
+    },
+    "results": {
+      "GWP-total": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg CO2 eq",
+        "modules": {
+          "A1": {
+            "value": 104.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.04E+02",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-total",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 4.21,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.21E+00",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-total",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 24.6,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.46E+01",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-total",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.00134,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.34E-03",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-total",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 1.35,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.35E+00",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-total",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 24.7,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.47E+01",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-total",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 1.45,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.45E+00",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-total",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -39.6,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-3.96E+01",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-total",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "GWP-fossil": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg CO2 eq",
+        "modules": {
+          "A1": {
+            "value": 131.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.31E+02",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-fossil",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 4.13,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.13E+00",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-fossil",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 8.37,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "8.37E+00",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-fossil",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.00133,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.33E-03",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-fossil",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 1.33,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.33E+00",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-fossil",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 15.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.5E+01",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-fossil",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.233,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.33E-01",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-fossil",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -39.5,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-3.95E+01",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-fossil",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "GWP-biogenic": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg CO2 eq",
+        "modules": {
+          "A1": {
+            "value": -26.8,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-2.68E+01",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-biogenic",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.00985,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "9.85E-03",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-biogenic",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 16.2,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.62E+01",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-biogenic",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 1.19e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.19E-05",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-biogenic",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.00317,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.17E-03",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-biogenic",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 9.68,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "9.68E+00",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-biogenic",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 1.22,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.22E+00",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-biogenic",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -0.0447,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-4.47E-02",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-biogenic",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "GWP-luluc": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg CO2 eq",
+        "modules": {
+          "A1": {
+            "value": 0.0722,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "7.22E-02",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-luluc",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0693,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.93E-02",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-luluc",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0373,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.73E-02",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-luluc",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 2.02e-07,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.02E-07",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-luluc",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0223,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.23E-02",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-luluc",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.00115,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.15E-03",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-luluc",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.00126,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.26E-03",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-luluc",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -0.0123,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.23E-02",
+            "raw_unit": "kg CO2 eq",
+            "raw_indicator_label": "GWP-luluc",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "ODP": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg CFC-11 eq",
+        "modules": {
+          "A1": {
+            "value": 5.57e-07,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.57E-07",
+            "raw_unit": "kg CFC11 eq",
+            "raw_indicator_label": "ODP",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 6.08e-13,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.08E-13",
+            "raw_unit": "kg CFC11 eq",
+            "raw_indicator_label": "ODP",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 1.25e-09,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.25E-09",
+            "raw_unit": "kg CFC11 eq",
+            "raw_indicator_label": "ODP",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 3.01e-14,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.01E-14",
+            "raw_unit": "kg CFC11 eq",
+            "raw_indicator_label": "ODP",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 1.96e-13,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.96E-13",
+            "raw_unit": "kg CFC11 eq",
+            "raw_indicator_label": "ODP",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": -5.34e-09,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-5.34E-09",
+            "raw_unit": "kg CFC11 eq",
+            "raw_indicator_label": "ODP",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 6.15e-13,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.15E-13",
+            "raw_unit": "kg CFC11 eq",
+            "raw_indicator_label": "ODP",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -4.69e-11,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-4.69E-11",
+            "raw_unit": "kg CFC11 eq",
+            "raw_indicator_label": "ODP",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "AP": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "mol H+ eq",
+        "modules": {
+          "A1": {
+            "value": 0.445,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.45E-01",
+            "raw_unit": "mol H+ eq",
+            "raw_indicator_label": "AP",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.00562,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.62E-03",
+            "raw_unit": "mol H+ eq",
+            "raw_indicator_label": "AP",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0269,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.69E-02",
+            "raw_unit": "mol H+ eq",
+            "raw_indicator_label": "AP",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 2.57e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.57E-06",
+            "raw_unit": "mol H+ eq",
+            "raw_indicator_label": "AP",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.00772,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "7.72E-03",
+            "raw_unit": "mol H+ eq",
+            "raw_indicator_label": "AP",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.0103,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.03E-02",
+            "raw_unit": "mol H+ eq",
+            "raw_indicator_label": "AP",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.00162,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.62E-03",
+            "raw_unit": "mol H+ eq",
+            "raw_indicator_label": "AP",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -0.129,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.29E-01",
+            "raw_unit": "mol H+ eq",
+            "raw_indicator_label": "AP",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "EP-freshwater": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg P eq",
+        "modules": {
+          "A1": {
+            "value": 0.000344,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.44E-04",
+            "raw_unit": "kg P eq",
+            "raw_indicator_label": "EP-freshwater",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 1.76e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.76E-05",
+            "raw_unit": "kg P eq",
+            "raw_indicator_label": "EP-freshwater",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 9.64e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "9.64E-05",
+            "raw_unit": "kg P eq",
+            "raw_indicator_label": "EP-freshwater",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 5.51e-09,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.51E-09",
+            "raw_unit": "kg P eq",
+            "raw_indicator_label": "EP-freshwater",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 5.68e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.68E-06",
+            "raw_unit": "kg P eq",
+            "raw_indicator_label": "EP-freshwater",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": -1.17e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.17E-05",
+            "raw_unit": "kg P eq",
+            "raw_indicator_label": "EP-freshwater",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 7.44e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "7.44E-06",
+            "raw_unit": "kg P eq",
+            "raw_indicator_label": "EP-freshwater",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -2.21e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-2.21E-05",
+            "raw_unit": "kg P eq",
+            "raw_indicator_label": "EP-freshwater",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "EP-marine": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg N eq",
+        "modules": {
+          "A1": {
+            "value": 0.0993,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "9.93E-02",
+            "raw_unit": "kg N eq",
+            "raw_indicator_label": "EP-marine",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.00203,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.03E-03",
+            "raw_unit": "kg N eq",
+            "raw_indicator_label": "EP-marine",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.012,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.2E-02",
+            "raw_unit": "kg N eq",
+            "raw_indicator_label": "EP-marine",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 6.41e-07,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.41E-07",
+            "raw_unit": "kg N eq",
+            "raw_indicator_label": "EP-marine",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.00376,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.76E-03",
+            "raw_unit": "kg N eq",
+            "raw_indicator_label": "EP-marine",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.00464,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.64E-03",
+            "raw_unit": "kg N eq",
+            "raw_indicator_label": "EP-marine",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.000439,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.39E-04",
+            "raw_unit": "kg N eq",
+            "raw_indicator_label": "EP-marine",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -0.0306,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-3.06E-02",
+            "raw_unit": "kg N eq",
+            "raw_indicator_label": "EP-marine",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "EP-terrestrial": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "mol N eq",
+        "modules": {
+          "A1": {
+            "value": 1.11,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.11E+00",
+            "raw_unit": "mol N eq",
+            "raw_indicator_label": "EP-terrestrial",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0242,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.42E-02",
+            "raw_unit": "mol N eq",
+            "raw_indicator_label": "EP-terrestrial",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.123,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.23E-01",
+            "raw_unit": "mol N eq",
+            "raw_indicator_label": "EP-terrestrial",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 6.71e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.71E-06",
+            "raw_unit": "mol N eq",
+            "raw_indicator_label": "EP-terrestrial",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0418,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.18E-02",
+            "raw_unit": "mol N eq",
+            "raw_indicator_label": "EP-terrestrial",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.0551,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.51E-02",
+            "raw_unit": "mol N eq",
+            "raw_indicator_label": "EP-terrestrial",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.00471,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.71E-03",
+            "raw_unit": "mol N eq",
+            "raw_indicator_label": "EP-terrestrial",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -0.337,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-3.37E-01",
+            "raw_unit": "mol N eq",
+            "raw_indicator_label": "EP-terrestrial",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "POCP": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg NMVOC eq",
+        "modules": {
+          "A1": {
+            "value": 0.306,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.06E-01",
+            "raw_unit": "kg NMVOC eq",
+            "raw_indicator_label": "POCP",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.00559,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.59E-03",
+            "raw_unit": "kg NMVOC eq",
+            "raw_indicator_label": "POCP",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0369,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.69E-02",
+            "raw_unit": "kg NMVOC eq",
+            "raw_indicator_label": "POCP",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 1.69e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.69E-06",
+            "raw_unit": "kg NMVOC eq",
+            "raw_indicator_label": "POCP",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.00725,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "7.25E-03",
+            "raw_unit": "kg NMVOC eq",
+            "raw_indicator_label": "POCP",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.012,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.2E-02",
+            "raw_unit": "kg NMVOC eq",
+            "raw_indicator_label": "POCP",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.00152,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.52E-03",
+            "raw_unit": "kg NMVOC eq",
+            "raw_indicator_label": "POCP",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -0.0857,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-8.57E-02",
+            "raw_unit": "kg NMVOC eq",
+            "raw_indicator_label": "POCP",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "ADPE": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg Sb eq",
+        "modules": {
+          "A1": {
+            "value": 0.00102,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.02E-03",
+            "raw_unit": "kg Sb eq",
+            "raw_indicator_label": "ADPE",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 3.59e-07,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.59E-07",
+            "raw_unit": "kg Sb eq",
+            "raw_indicator_label": "ADPE",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 6.3e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.3E-06",
+            "raw_unit": "kg Sb eq",
+            "raw_indicator_label": "ADPE",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 2.49e-10,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.49E-10",
+            "raw_unit": "kg Sb eq",
+            "raw_indicator_label": "ADPE",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 1.16e-07,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.16E-07",
+            "raw_unit": "kg Sb eq",
+            "raw_indicator_label": "ADPE",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": -4.27e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-4.27E-08",
+            "raw_unit": "kg Sb eq",
+            "raw_indicator_label": "ADPE",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 1.45e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.45E-08",
+            "raw_unit": "kg Sb eq",
+            "raw_indicator_label": "ADPE",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -1.32e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.32E-05",
+            "raw_unit": "kg Sb eq",
+            "raw_indicator_label": "ADPE",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "ADPF": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 1850.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.85E+03",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "ADPF",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 54.3,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.43E+01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "ADPF",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 132.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.32E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "ADPF",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0279,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.79E-02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "ADPF",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 17.5,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.75E+01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "ADPF",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 7.49,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "7.49E+00",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "ADPF",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 3.14,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.14E+00",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "ADPF",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -466.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-4.66E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "ADPF",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "WDP": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "m3 world eq deprived",
+        "modules": {
+          "A1": {
+            "value": 13.8,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.38E+01",
+            "raw_unit": "m3 world eq deprived",
+            "raw_indicator_label": "WDP",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0639,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.39E-02",
+            "raw_unit": "m3 world eq deprived",
+            "raw_indicator_label": "WDP",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.526,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.26E-01",
+            "raw_unit": "m3 world eq deprived",
+            "raw_indicator_label": "WDP",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.000367,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.67E-04",
+            "raw_unit": "m3 world eq deprived",
+            "raw_indicator_label": "WDP",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0206,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.06E-02",
+            "raw_unit": "m3 world eq deprived",
+            "raw_indicator_label": "WDP",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 2.68,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.68E+00",
+            "raw_unit": "m3 world eq deprived",
+            "raw_indicator_label": "WDP",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0269,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.69E-02",
+            "raw_unit": "m3 world eq deprived",
+            "raw_indicator_label": "WDP",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -5.85,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-5.85E+00",
+            "raw_unit": "m3 world eq deprived",
+            "raw_indicator_label": "WDP",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "PERE": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 385.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.85E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERE",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 4.68,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.68E+00",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERE",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 323.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.23E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERE",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0201,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.01E-02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERE",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 1.51,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.51E+00",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERE",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 108.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.08E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERE",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.518,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.18E-01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERE",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -109.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.09E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERE",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "PERM": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 264.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.64E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERM",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERM",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 41.9,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.19E+01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERM",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERM",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERM",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": -106.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.06E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERM",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERM",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERM",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "PERT": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 650.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.5E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERT",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 4.68,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.68E+00",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERT",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 365.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.65E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERT",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0201,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.01E-02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERT",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 1.51,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.51E+00",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERT",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 1.76,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.76E+00",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERT",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.518,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.18E-01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERT",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -109.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.09E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PERT",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "PENRE": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 1660.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.66E+03",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRE",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 54.3,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.43E+01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRE",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 117.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.17E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRE",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0279,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.79E-02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRE",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 17.5,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.75E+01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRE",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 200.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRE",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 3.14,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.14E+00",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRE",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -466.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-4.66E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRE",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "PENRM": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 193.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.93E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRM",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRM",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 14.8,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.48E+01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRM",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRM",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRM",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": -192.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.92E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRM",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRM",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRM",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "PENRT": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 1850.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.85E+03",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRT",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 54.3,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.43E+01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRT",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 132.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.32E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRT",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0279,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.79E-02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRT",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 17.5,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.75E+01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRT",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 7.49,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "7.49E+00",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRT",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 3.14,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.14E+00",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRT",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -466.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-4.66E+02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "PENRT",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "SM": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg",
+        "modules": {
+          "A1": {
+            "value": 4.6,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.6E+00",
+            "raw_unit": "kg",
+            "raw_indicator_label": "SM",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "SM",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "SM",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "SM",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "SM",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "SM",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "SM",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "SM",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "RSF": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "RSF",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "RSF",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "RSF",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "RSF",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "RSF",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "RSF",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "RSF",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "RSF",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "NRSF": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "NRSF",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "NRSF",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "NRSF",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "NRSF",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "NRSF",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "NRSF",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "NRSF",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "NRSF",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "FW": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "m3",
+        "modules": {
+          "A1": {
+            "value": 0.631,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.31E-01",
+            "raw_unit": "m3",
+            "raw_indicator_label": "FW",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.00522,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.22E-03",
+            "raw_unit": "m3",
+            "raw_indicator_label": "FW",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0354,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.54E-02",
+            "raw_unit": "m3",
+            "raw_indicator_label": "FW",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 1.54e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.54E-05",
+            "raw_unit": "m3",
+            "raw_indicator_label": "FW",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.00168,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.68E-03",
+            "raw_unit": "m3",
+            "raw_indicator_label": "FW",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.0632,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.32E-02",
+            "raw_unit": "m3",
+            "raw_indicator_label": "FW",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.00081,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "8.1E-04",
+            "raw_unit": "m3",
+            "raw_indicator_label": "FW",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -0.224,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-2.24E-01",
+            "raw_unit": "m3",
+            "raw_indicator_label": "FW",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 2,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "HWD": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg",
+        "modules": {
+          "A1": {
+            "value": 0.00232,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.32E-03",
+            "raw_unit": "kg",
+            "raw_indicator_label": "HWD",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 2.08e-09,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.08E-09",
+            "raw_unit": "kg",
+            "raw_indicator_label": "HWD",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 2.35e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.35E-06",
+            "raw_unit": "kg",
+            "raw_indicator_label": "HWD",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 4.03e-11,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.03E-11",
+            "raw_unit": "kg",
+            "raw_indicator_label": "HWD",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 6.7e-10,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.7E-10",
+            "raw_unit": "kg",
+            "raw_indicator_label": "HWD",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 3.69e-09,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.69E-09",
+            "raw_unit": "kg",
+            "raw_indicator_label": "HWD",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 7.56e-10,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "7.56E-10",
+            "raw_unit": "kg",
+            "raw_indicator_label": "HWD",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -7.99e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-7.99E-08",
+            "raw_unit": "kg",
+            "raw_indicator_label": "HWD",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "NHWD": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg",
+        "modules": {
+          "A1": {
+            "value": 13.8,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.38E+01",
+            "raw_unit": "kg",
+            "raw_indicator_label": "NHWD",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.00887,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "8.87E-03",
+            "raw_unit": "kg",
+            "raw_indicator_label": "NHWD",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.289,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.89E-01",
+            "raw_unit": "kg",
+            "raw_indicator_label": "NHWD",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 2.3e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.3E-05",
+            "raw_unit": "kg",
+            "raw_indicator_label": "NHWD",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.00286,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.86E-03",
+            "raw_unit": "kg",
+            "raw_indicator_label": "NHWD",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.962,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "9.62E-01",
+            "raw_unit": "kg",
+            "raw_indicator_label": "NHWD",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 13.8,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.38E+01",
+            "raw_unit": "kg",
+            "raw_indicator_label": "NHWD",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -5.67,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-5.67E+00",
+            "raw_unit": "kg",
+            "raw_indicator_label": "NHWD",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "RWD": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg",
+        "modules": {
+          "A1": {
+            "value": 0.04,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4E-02",
+            "raw_unit": "kg",
+            "raw_indicator_label": "RWD",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 9.9e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "9.9E-05",
+            "raw_unit": "kg",
+            "raw_indicator_label": "RWD",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.00176,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.76E-03",
+            "raw_unit": "kg",
+            "raw_indicator_label": "RWD",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 4.45e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.45E-06",
+            "raw_unit": "kg",
+            "raw_indicator_label": "RWD",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 3.19e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.19E-05",
+            "raw_unit": "kg",
+            "raw_indicator_label": "RWD",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.000313,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.13E-04",
+            "raw_unit": "kg",
+            "raw_indicator_label": "RWD",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 3.42e-05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.42E-05",
+            "raw_unit": "kg",
+            "raw_indicator_label": "RWD",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -0.017,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.7E-02",
+            "raw_unit": "kg",
+            "raw_indicator_label": "RWD",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "CRU": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg",
+        "modules": {
+          "A1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "CRU",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "CRU",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "CRU",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "CRU",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "CRU",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "CRU",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "CRU",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "CRU",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "MFR": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg",
+        "modules": {
+          "A1": {
+            "value": 0.0174,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.74E-02",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MFR",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MFR",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 15.7,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.57E+01",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MFR",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MFR",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MFR",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 16.3,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.63E+01",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MFR",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MFR",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MFR",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "MER": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kg",
+        "modules": {
+          "A1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MER",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MER",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MER",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MER",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MER",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MER",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MER",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "kg",
+            "raw_indicator_label": "MER",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "EEE": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 0.0345,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.45E-02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EEE",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EEE",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EEE",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EEE",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EEE",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 42.8,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.28E+01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EEE",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EEE",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EEE",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "EET": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "MJ",
+        "modules": {
+          "A1": {
+            "value": 0.0503,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.03E-02",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EET",
+            "raw_module_header": "A1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EET",
+            "raw_module_header": "A2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EET",
+            "raw_module_header": "A3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EET",
+            "raw_module_header": "C1",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EET",
+            "raw_module_header": "C2",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 77.4,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "7.74E+01",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EET",
+            "raw_module_header": "C3",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EET",
+            "raw_module_header": "C4",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": 0.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "0",
+            "raw_unit": "MJ",
+            "raw_indicator_label": "EET",
+            "raw_module_header": "D",
+            "source_page": 6,
+            "source_table": 3,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "PM": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "disease incidence",
+        "modules": {
+          "A1": {
+            "value": 9.37e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "9.37E-06",
+            "raw_unit": "Disease incidence",
+            "raw_indicator_label": "PM",
+            "raw_module_header": "A1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 5.67e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.67E-08",
+            "raw_unit": "Disease incidence",
+            "raw_indicator_label": "PM",
+            "raw_module_header": "A2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 2.88e-07,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.88E-07",
+            "raw_unit": "Disease incidence",
+            "raw_indicator_label": "PM",
+            "raw_module_header": "A3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 2.15e-11,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.15E-11",
+            "raw_unit": "Disease incidence",
+            "raw_indicator_label": "PM",
+            "raw_module_header": "C1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 4.24e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.24E-08",
+            "raw_unit": "Disease incidence",
+            "raw_indicator_label": "PM",
+            "raw_module_header": "C2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 4.28e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.28E-08",
+            "raw_unit": "Disease incidence",
+            "raw_indicator_label": "PM",
+            "raw_module_header": "C3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 1.97e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.97E-08",
+            "raw_unit": "Disease incidence",
+            "raw_indicator_label": "PM",
+            "raw_module_header": "C4",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -1.85e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.85E-06",
+            "raw_unit": "Disease incidence",
+            "raw_indicator_label": "PM",
+            "raw_module_header": "D",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "IRP": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "kBq U235 eq",
+        "modules": {
+          "A1": {
+            "value": 5.13,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "5.13E+00",
+            "raw_unit": "kBq U235 eq",
+            "raw_indicator_label": "IR",
+            "raw_module_header": "A1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 0.0144,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.44E-02",
+            "raw_unit": "kBq U235 eq",
+            "raw_indicator_label": "IR",
+            "raw_module_header": "A2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 0.287,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.87E-01",
+            "raw_unit": "kBq U235 eq",
+            "raw_indicator_label": "IR",
+            "raw_module_header": "A3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.000734,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "7.34E-04",
+            "raw_unit": "kBq U235 eq",
+            "raw_indicator_label": "IR",
+            "raw_module_header": "C1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 0.00463,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.63E-03",
+            "raw_unit": "kBq U235 eq",
+            "raw_indicator_label": "IR",
+            "raw_module_header": "C2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 0.042,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.2E-02",
+            "raw_unit": "kBq U235 eq",
+            "raw_indicator_label": "IR",
+            "raw_module_header": "C3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.00416,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.16E-03",
+            "raw_unit": "kBq U235 eq",
+            "raw_indicator_label": "IR",
+            "raw_module_header": "C4",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -2.52,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-2.52E+00",
+            "raw_unit": "kBq U235 eq",
+            "raw_indicator_label": "IR",
+            "raw_module_header": "D",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "ETP-fw": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "CTUe",
+        "modules": {
+          "A1": {
+            "value": 1680.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.68E+03",
+            "raw_unit": "CTUe",
+            "raw_indicator_label": "ETP-fw",
+            "raw_module_header": "A1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 40.3,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.03E+01",
+            "raw_unit": "CTUe",
+            "raw_indicator_label": "ETP-fw",
+            "raw_module_header": "A2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 43.9,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.39E+01",
+            "raw_unit": "CTUe",
+            "raw_indicator_label": "ETP-fw",
+            "raw_module_header": "A3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.00808,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "8.08E-03",
+            "raw_unit": "CTUe",
+            "raw_indicator_label": "ETP-fw",
+            "raw_module_header": "C1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 13.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.3E+01",
+            "raw_unit": "CTUe",
+            "raw_indicator_label": "ETP-fw",
+            "raw_module_header": "C2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 3.47,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.47E+00",
+            "raw_unit": "CTUe",
+            "raw_indicator_label": "ETP-fw",
+            "raw_module_header": "C3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 2.05,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.05E+00",
+            "raw_unit": "CTUe",
+            "raw_indicator_label": "ETP-fw",
+            "raw_module_header": "C4",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -136.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.36E+02",
+            "raw_unit": "CTUe",
+            "raw_indicator_label": "ETP-fw",
+            "raw_module_header": "D",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "HTP-c": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "CTUh",
+        "modules": {
+          "A1": {
+            "value": 1.77e-06,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.77E-06",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-c",
+            "raw_module_header": "A1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 8.15e-10,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "8.15E-10",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-c",
+            "raw_module_header": "A2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 1.17e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.17E-08",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-c",
+            "raw_module_header": "A3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 4.54e-13,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.54E-13",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-c",
+            "raw_module_header": "C1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 2.62e-10,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.62E-10",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-c",
+            "raw_module_header": "C2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 2.23e-10,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.23E-10",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-c",
+            "raw_module_header": "C3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 4.75e-11,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.75E-11",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-c",
+            "raw_module_header": "C4",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -4.15e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-4.15E-08",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-c",
+            "raw_module_header": "D",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "HTP-nc": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "CTUh",
+        "modules": {
+          "A1": {
+            "value": 9.71e-07,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "9.71E-07",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-nc",
+            "raw_module_header": "A1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 3.66e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "3.66E-08",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-nc",
+            "raw_module_header": "A2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 1.05e-07,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.05E-07",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-nc",
+            "raw_module_header": "A3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 6.95e-12,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "6.95E-12",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-nc",
+            "raw_module_header": "C1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 1.18e-08,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.18E-08",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-nc",
+            "raw_module_header": "C2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 9.88e-09,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "9.88E-09",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-nc",
+            "raw_module_header": "C3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 2.46e-09,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.46E-09",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-nc",
+            "raw_module_header": "C4",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -1.42e-07,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-1.42E-07",
+            "raw_unit": "CTUh",
+            "raw_indicator_label": "HTP-nc",
+            "raw_module_header": "D",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      },
+      "SQP": {
+        "method_profile": "EN15804_A2_UNKNOWN_EF",
+        "canonical_unit": "unitless",
+        "modules": {
+          "A1": {
+            "value": 4990.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "4.99E+03",
+            "raw_unit": "SQP",
+            "raw_indicator_label": "SQP",
+            "raw_module_header": "A1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A2": {
+            "value": 26.7,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.67E+01",
+            "raw_unit": "SQP",
+            "raw_indicator_label": "SQP",
+            "raw_module_header": "A2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "A3": {
+            "value": 268.0,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "2.68E+02",
+            "raw_unit": "SQP",
+            "raw_indicator_label": "SQP",
+            "raw_module_header": "A3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C1": {
+            "value": 0.0117,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.17E-02",
+            "raw_unit": "SQP",
+            "raw_indicator_label": "SQP",
+            "raw_module_header": "C1",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C2": {
+            "value": 8.61,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "8.61E+00",
+            "raw_unit": "SQP",
+            "raw_indicator_label": "SQP",
+            "raw_module_header": "C2",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C3": {
+            "value": 1.42,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "1.42E+00",
+            "raw_unit": "SQP",
+            "raw_indicator_label": "SQP",
+            "raw_module_header": "C3",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "C4": {
+            "value": 0.782,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "7.82E-01",
+            "raw_unit": "SQP",
+            "raw_indicator_label": "SQP",
+            "raw_module_header": "C4",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          },
+          "D": {
+            "value": -28.6,
+            "status": "declared",
+            "provenance": "reported",
+            "raw_value": "-2.86E+01",
+            "raw_unit": "SQP",
+            "raw_indicator_label": "SQP",
+            "raw_module_header": "D",
+            "source_page": 7,
+            "source_table": 1,
+            "confidence": 0.98,
+            "extraction_method": "pdf_table"
+          }
+        }
+      }
+    },
+    "module_declarations": {
+      "A1": {
+        "status": "X",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "A2": {
+        "status": "X",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "A3": {
+        "status": "X",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "A4": {
+        "status": "MND",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "A5": {
+        "status": "MND",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "B1": {
+        "status": "MND",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "B2": {
+        "status": "MND",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "B3": {
+        "status": "MNR",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "B4": {
+        "status": "MNR",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "B5": {
+        "status": "MNR",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "B6": {
+        "status": "MND",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "B7": {
+        "status": "MND",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "C1": {
+        "status": "X",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "C2": {
+        "status": "X",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "C3": {
+        "status": "X",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "C4": {
+        "status": "X",
+        "source_page": 6,
+        "source_table": 1
+      },
+      "D": {
+        "status": "X",
+        "source_page": 6,
+        "source_table": 1
+      }
+    },
+    "a1_a3_reporting_mode": "split_only",
+    "scenarios": {
+      "A4": {},
+      "A5": {},
+      "B": {},
+      "C1": {},
+      "C2": {},
+      "C3": {},
+      "C4": {},
+      "D": {},
+      "EOL_common": {}
+    },
+    "qa": {
+      "warnings": [],
+      "errors": [],
+      "manual_review_required": true
+    },
+    "review": {
+      "status": "approved",
+      "human_verified": true
+    },
+    "digital_template": {
+      "ilcd_mapping": null,
+      "digital_signature": null
+    }
+  }
+]
