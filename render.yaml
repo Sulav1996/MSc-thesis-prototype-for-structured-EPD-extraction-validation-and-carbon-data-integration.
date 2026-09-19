@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: epd-carbon-prototype
+    runtime: python
+    plan: free
+
+    buildCommand: pip install -r requirements.txt
+
+    startCommand: >
+      streamlit run frontpage.py
+      --server.address 0.0.0.0
+      --server.port $PORT
+      --server.headless true
+      --browser.gatherUsageStats false
