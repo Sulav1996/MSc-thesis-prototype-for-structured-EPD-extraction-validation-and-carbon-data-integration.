@@ -12,3 +12,19 @@ services:
       --server.port $PORT
       --server.headless true
       --browser.gatherUsageStats false
+
+    envVars:
+      # auto = Google Drive when the three GDRIVE_* values are set, otherwise local disk.
+      # On Render's free plan the local disk is wiped on every deploy/restart, so use Drive.
+      - key: EPD_STORAGE_BACKEND
+        value: auto
+      - key: EPD_DATA_DIR
+        value: /tmp/epd_store
+      - key: GDRIVE_FOLDER_NAME
+        value: EPD_Prototype_Store
+      - key: GDRIVE_CLIENT_ID
+        sync: false
+      - key: GDRIVE_CLIENT_SECRET
+        sync: false
+      - key: GDRIVE_REFRESH_TOKEN
+        sync: false

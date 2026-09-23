@@ -1,0 +1,17 @@
+# Python / local environments
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Runtime data written by the app (index, blobs, Drive cache) — lives in data/store or Google Drive
+data/store/
+
+# Secrets (Google OAuth) — never commit
+.streamlit/secrets.toml
+client_secret*.json
+
+# Large ILCD reference material (667 MB). The app only needs the generated
+# data/epd_dictionary.json and data/ilcd_reference.json, which ARE committed.
+ILCD pdf/
